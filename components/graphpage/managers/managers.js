@@ -16,6 +16,8 @@ function renderManagers() {
             .attr("class", "managerInfo")
             .on("click", function () {
                 console.log(d);
+
+                profilepage(d);
                 // anropa profilepage med d som argument
             })
 
