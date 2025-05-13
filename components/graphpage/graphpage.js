@@ -5,6 +5,6 @@ function graphpage() {
 
     main.append(graphpageCon);
 
-
     renderManagers();
+    renderGraphs();
 }

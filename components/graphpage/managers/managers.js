@@ -8,18 +8,13 @@ function renderManagers() {
       .attr("class", "manager")  // Lägg till en klass för stilmöjligheter
   
       // Lägg till bild som syskon till knappen
-      .each(function(d) {
+      .each(function(d) {        
 
         // Lägg till punkter
         d3.select(this).append("p")
             .html(`&#8230;`)  // Använd .html() istället för .text() för att tolka HTML-tecken
             .attr("class", "managerInfo")
-            .on("click", function () {
-                console.log(d);
-
-                profilepage(d);
-                // anropa profilepage med d som argument
-            })
+            .on("click", () => profilepage(d))
 
         // Lägg till bilden
         d3.select(this).append("img")
@@ -29,6 +24,10 @@ function renderManagers() {
           .on("click", function() {
             // Exempel på vad som händer när knappen klickas
             console.log(`${d.name} clicked!`);
+
+            // lägg till grafuppdatering
+            // updateGraphs(d)
+
           });
   
         // Lägg till knappen
@@ -37,6 +36,9 @@ function renderManagers() {
           .on("click", function() {
             // Exempel på vad som händer när knappen klickas
             console.log(`${d.name} clicked!`);
+
+            // lägg till grafuppdatering
+
           });
       });
   }
