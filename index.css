@@ -2,6 +2,12 @@
   --backgroundColor: #1C1C1C;
   --textWhite: #ffffff;
   --textGray: #595959;
+  --fontMaven: "maven-pro";
+}
+
+@font-face {
+  font-family: "maven-pro";
+  src: url(fonts/Maven_Pro/MavenPro-VariableFont_wght.ttf);
 }
 
 .paragraphs {
