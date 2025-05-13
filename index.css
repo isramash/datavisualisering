@@ -5,6 +5,11 @@
   --fontMaven: "maven-pro";
 }
 
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: "maven-pro";
   src: url(fonts/Maven_Pro/MavenPro-VariableFont_wght.ttf);
@@ -18,5 +23,4 @@
 
 body {
   background-color: var(--backgroundColor);
-  margin: 0;
 }
