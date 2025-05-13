@@ -1,8 +1,9 @@
+
+
 const wSvg = 600, hSvg = 400,
       hViz = .8 * hSvg, wViz = .8 * wSvg,
       hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2
 ;
-
 
 // Get the Dataset
 const managerDataset = [];
@@ -70,7 +71,7 @@ for (let manager of Managers) {
 
 // Förbered en array med alla värden på X-skalan (months)
 let years = [];
-for (let year = 2015; year < 2025; year ++) { years.push(year); }
+for (let year = 2020; year < 2025; year ++) { years.push(year); }
 
 console.log(years);
 
@@ -89,14 +90,13 @@ for (let dataset of managerDataset) {
 
 }
 
-// Skapa knapparna
 d3.select("main").append("div")
-  .selectAll("div")
-  .data(managerDataset)
-  .enter()
-  .append("button")
-  .text(d => d.name)
-  .on("click", (event,d) => {
+    .selectAll("div")
+    .data(managerDataset)
+    .enter()
+    .append("button")
+    .text(d => d.name)
+    .on("click", (event,d) => {
     let line = d3.select(`#line_${d.id}`);
     let points = d3.selectAll(`#points_${d.id} .data-point`);
 
@@ -123,7 +123,8 @@ d3.select("main").append("div")
 
     gigsLine.attr("visibility", newValue);
     gigsPoints.attr("visibility", newValue);
-  })
+    })
+
 
 const svg = d3.select("main").append("svg")
             .attr("width", wSvg)
@@ -190,7 +191,6 @@ svg2.append("g")
   .attr("d", d => dMakerGigs(d.nGigs))
   .attr("fill", "none")
   .attr("stroke", "blue")
-  .attr("stroke-dasharray", "5,5")
   .attr("stroke-width", 2)
   .attr("visibility", "hidden");
 
@@ -231,4 +231,6 @@ svg.append("g")
 //   .attr("r", 4)
 //   .attr("fill", "blue")
 //   .attr("visibility", "hidden");
+
+
 
