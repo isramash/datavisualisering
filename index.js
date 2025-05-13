@@ -1,2 +1,2 @@
 frontpage();
-graphPage();
+graphpage();

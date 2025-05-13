@@ -4,4 +4,7 @@ function graphpage() {
     graphpageCon.id = "graphpageCon";
 
     main.append(graphpageCon);
+
+
+    renderManagers();
 }

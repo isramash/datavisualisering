@@ -1,33 +1,41 @@
-function renderManagers () {
-    d3.select("main").append("div")
-  .selectAll("div")
-  .data(managerDataset)
-  .enter()
-  .append("button")
-  .text(d => d.name)
-  .on("click", (event, d) => {
-    let line = d3.select(`#line_${d.id}`);
-    let points = d3.selectAll(`#points_${d.id} .data-point`);
-    let gigsLine = d3.select(`#gigsLine_${d.id}`);
-    let gigsPoints = d3.selectAll(`#gigsPoints_${d.id} .gigs-point`);
+function renderManagers() {
+    d3.select("#graphpageCon").append("div")
+      .attr("id", "managerCon")  
+      .selectAll("div")
+      .data(Managers)
+      .enter()
+      .append("div")  // Skapar en div för varje manager
+      .attr("class", "manager")  // Lägg till en klass för stilmöjligheter
+  
+      // Lägg till bild som syskon till knappen
+      .each(function(d) {
 
-    let visible = line.attr("visibility");
-    let newValue = (visible == "hidden") ? "visible" : "hidden";
+        // Lägg till punkter
+        d3.select(this).append("p")
+            .html(`&#8230;`)  // Använd .html() istället för .text() för att tolka HTML-tecken
+            .attr("class", "managerInfo")
+            .on("click", function () {
+                console.log(d);
+                // anropa profilepage med d som argument
+            })
 
-    d3.selectAll(".data-line").attr("visibility", "hidden");
-    d3.selectAll(".data-point").attr("visibility", "hidden");
-    d3.selectAll(".gigs-line").attr("visibility", "hidden");
-    d3.selectAll(".gigs-point").attr("visibility", "hidden");
-
-    let activeButton = document.querySelector("button.active");
-    if (activeButton) activeButton.classList.remove("active");
-
-    let classAction = newValue == "hidden" ? "remove" : "add";
-    event.target.classList[classAction]("active");
-
-    line.attr("visibility", newValue);
-    points.attr("visibility", newValue);
-    gigsLine.attr("visibility", newValue);
-    gigsPoints.attr("visibility", newValue);
-  });
-}
+        // Lägg till bilden
+        d3.select(this).append("img")
+          .attr("src", d.image)  // Anta att varje manager har en imageUrl
+          .attr("width", 80)  // Exempel på bildstorlek
+          .attr("height", 80)
+          .on("click", function() {
+            // Exempel på vad som händer när knappen klickas
+            console.log(`${d.name} clicked!`);
+          });
+  
+        // Lägg till knappen
+        d3.select(this).append("button")
+          .text(d.name)  // Sätter knappens text till managerns namn
+          .on("click", function() {
+            // Exempel på vad som händer när knappen klickas
+            console.log(`${d.name} clicked!`);
+          });
+      });
+  }
+  

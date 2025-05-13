@@ -67,16 +67,16 @@ const citiesByContinent = {
 };
 
 const Managers = [
-  { "id": 1323, "name": "Fatima Johansson" },
-  { "id": 1609, "name": "Kerstin Rodriguez" },
-  { "id": 1656, "name": "Maja Shankar" },
-  { "id": 3151, "name": "Mahan Nilsson" },
-  { "id": 6643, "name": "Karl Petrovic" },
-  { "id": 7787, "name": "Sara Shirzad" },
-  { "id": 7836, "name": "Omar Wennström" },
-  { "id": 7909, "name": "Tomek Garcia" },
-  { "id": 8370, "name": "Ivan Holmberg" },
-  { "id": 9597, "name": "Stella Dudek" }
+  { "id": 1323, "name": "Fatima Johansson", "image": "avatar.avif"},
+  { "id": 1609, "name": "Kerstin Rodriguez", "image": "avatar.avif" },
+  { "id": 1656, "name": "Maja Shankar", "image": "avatar.avif" },
+  { "id": 3151, "name": "Mahan Nilsson", "image": "avatar.avif" },
+  { "id": 6643, "name": "Karl Petrovic", "image": "avatar.avif" },
+  { "id": 7787, "name": "Sara Shirzad", "image": "avatar.avif" },
+  { "id": 7836, "name": "Omar Wennström", "image": "avatar.avif" },
+  { "id": 7909, "name": "Tomek Garcia", "image": "avatar.avif" },
+  { "id": 8370, "name": "Ivan Holmberg", "image": "avatar.avif" },
+  { "id": 9597, "name": "Stella Dudek", "image": "avatar.avif" }
 ];
 
 const Producers = [
