@@ -1,8 +1,9 @@
+
+
 const wSvg = 600, hSvg = 400,
   hViz = .8 * hSvg, wViz = .8 * wSvg,
   hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2
   ;
-
 
 // Get the Dataset
 const managerDataset = [];
@@ -89,7 +90,6 @@ for (let dataset of managerDataset) {
 
 }
 
-// Skapa knapparna
 d3.select("main").append("div")
   .selectAll("div")
   .data(managerDataset)
@@ -124,6 +124,7 @@ d3.select("main").append("div")
     gigsLine.attr("visibility", newValue);
     gigsPoints.attr("visibility", newValue);
   })
+
 
 const svg = d3.select("main").append("svg")
   .attr("width", wSvg)
@@ -190,7 +191,6 @@ svg2.append("g")
   .attr("d", d => dMakerGigs(d.nGigs))
   .attr("fill", "none")
   .attr("stroke", "blue")
-  .attr("stroke-dasharray", "5,5")
   .attr("stroke-width", 2)
   .attr("visibility", "hidden");
 
@@ -231,4 +231,6 @@ svg.append("g")
 //   .attr("r", 4)
 //   .attr("fill", "blue")
 //   .attr("visibility", "hidden");
+
+
 
