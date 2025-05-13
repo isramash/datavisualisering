@@ -1,9 +1,7 @@
-function graphPage () {
+function graphpage() {
     let main = document.querySelector("main");
+    let graphpageCon = document.createElement("div");
+    graphpageCon.id = "graphpageCon";
 
-    let container = document.createElement("div");
-    container.classList.add("graphPageContainer");
-    main.append(container);
-
-    renderManagers();
+    main.append(graphpageCon);
 }

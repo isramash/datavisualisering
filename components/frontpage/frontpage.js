@@ -23,12 +23,12 @@ function frontpage() {
     <p>"I found my manager here"</p>
     </div>
     <div id = 'secondReview'>
-    <p>"The best site ever"</p>
-    <p>"The best site ever"</p>
+    <p>"Wanted to play more in America and I got to do that"</p>
+    <p>"I earned alot more money"</p>
     </div>
     <div id = 'thirdReview'>
-    <p>"The best site ever"</p>
-    <p>"The best site ever"</p>
+    <p>"Talented, amazing, recommend"</p>
+    <p>"I found more than a manager, a soulmate"</p>
     </div>
     `
 
