@@ -5,6 +5,10 @@ function renderGraphs() {
         hViz = .8 * hSvg, wViz = .8 * wSvg,
         hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2;
 
+    const earningSvg = d3.select("#graphpageCon").append("svg")
+        .attr("width", wSvg)
+        .attr("height", hSvg);
+
     // Skapa ett nytt dataset
     const managerDataset = [];
 
@@ -40,12 +44,11 @@ function renderGraphs() {
             averageIncomePerDJ: Math.round(averageIncome),
             nGigs: totalGigs
         });
-    }
 
-    console.log(managerDataset);
-    // let maxAverageNumber = managerDataset.averageIncomePerDJ;
-    // managerDataset.forEach(d => maxAverageNumber = Math.max(maxAverageNumber, d.maxAverageNumber));
-    // console.log(maxAverageNumber);
+        console.log(averageIncome);
+
+        
+    }
 
     let maxAverageNumber = managerDataset[0].averageIncomePerDJ;
     managerDataset.forEach(d => {
@@ -71,13 +74,24 @@ function renderGraphs() {
     // Här kan du lägga till kod för att visualisera det med D3 eller liknande
 
 
-    const earningSvg = d3.select("#graphpageCon").append("svg")
-        .attr("width", wSvg)
-        .attr("height", hSvg);
+
 
 
     let xScale = d3.scaleBand(years, [wPadding, wPadding + wViz]);
-    let yScale = d3.scaleLinear([0, maxAverageNumber], [hPadding + hViz, hPadding]);
+    let yScale = d3.scaleLinear([0, (maxAverageNumber)], [hPadding + hViz, hPadding]);
+
+    let xAxis = d3.axisBottom(xScale);
+    let xGroup = earningSvg.append("g")
+        .call(xAxis)
+        .attr("transform", `translate(0, ${hPadding + hViz})`)
+    
+    let yAxis = d3.axisLeft(yScale);
+    let yGroup = earningSvg.append("g")
+        .call(yAxis)
+        .attr("transform", `translate(${wPadding}, 0)`)
+
+    // const dMaker = d3.line()
+    //     .x(d => )
 }
 
 
