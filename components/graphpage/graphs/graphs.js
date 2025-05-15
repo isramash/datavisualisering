@@ -41,9 +41,17 @@ function renderGraphs() {
         });
     }
 
+    console.log(managerDataset);
     // let maxAverageNumber = managerDataset.averageIncomePerDJ;
     // managerDataset.forEach(d => maxAverageNumber = Math.max(maxAverageNumber, d.maxAverageNumber));
     // console.log(maxAverageNumber);
+
+    let maxAverageNumber = managerDataset[0].averageIncomePerDJ;
+    managerDataset.forEach(d => {
+        maxAverageNumber = Math.max(maxAverageNumber, d.averageIncomePerDJ);
+    });
+
+    console.log("max nummer:" + maxAverageNumber);
 
 
     // Logga resultatet
@@ -68,7 +76,7 @@ function renderGraphs() {
 
 
     let xScale = d3.scaleBand(years, [wPadding, wPadding + wViz]);
-    let yScale = d3.scaleLinear
+    let yScale = d3.scaleLinear([0, maxAverageNumber], [hPadding + hViz, hPadding]);
 }
 
 
