@@ -172,7 +172,7 @@ function renderGraphs() {
         .range([hPadding + hViz, hPadding]);
 
     // Axlar
-    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")); // formaterar år som heltal
+    const xAxis = d3.axisBottom(xScale);
     earningSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
         .call(xAxis);
