@@ -37,7 +37,8 @@ function renderGraphs() {
         managerDataset.push({
             managerId: managerID,
             managerName: managerName,
-            averageIncomePerDJ: Math.round(averageIncome)
+            averageIncomePerDJ: Math.round(averageIncome),
+            nGigs: totalGigs
         });
     }
 
