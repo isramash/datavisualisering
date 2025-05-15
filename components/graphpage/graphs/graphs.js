@@ -1,5 +1,5 @@
 
-function renderGraphs() {
+/* function renderGraphs() {
     // Bestämmer storlekar på graferna
     const wSvg = 600, hSvg = 400,
         hViz = .8 * hSvg, wViz = .8 * wSvg,
@@ -96,3 +96,115 @@ function renderGraphs() {
 }
 
 
+*/
+
+function renderGraphs() {
+    // Bestäm storlekar på SVG och grafyta
+    const wSvg = 600, hSvg = 400,
+        hViz = 0.8 * hSvg, wViz = 0.8 * wSvg,
+        hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2;
+
+    const earningSvg = d3.select("#graphpageCon").append("svg")
+        .attr("width", wSvg)
+        .attr("height", hSvg);
+
+    const years = [2020, 2021, 2022, 2023, 2024];
+
+    const managerDataset = [];
+
+    let globalMaxIncome = 0; // För y-axeln
+
+    for (let manager of Managers) {
+        let managerID = manager.id;
+        let managerName = manager.name;
+
+        const managedDJs = DJs.filter(dj => dj.managerID === managerID);
+
+        // Skapa ett objekt för årsbaserad inkomst
+        let yearlyIncomes = {};
+        for (let year of years) {
+            yearlyIncomes[year] = {
+                totalIncome: 0,
+                totalGigs: 0
+            };
+        }
+
+        for (let dj of managedDJs) {
+            const djGigs = Gigs.filter(gig => gig.djID === dj.id);
+
+            for (let gig of djGigs) {
+                const year = new Date(gig.date).getFullYear();
+                if (year >= 2020 && year < 2025) {
+                    yearlyIncomes[year].totalIncome += gig.djEarnings;
+                    yearlyIncomes[year].totalGigs++;
+                }
+            }
+        }
+
+        const yearlyAverages = [];
+
+        for (let year of years) {
+            const data = yearlyIncomes[year];
+            const avg = (data.totalGigs > 0) ? data.totalIncome / data.totalGigs : 0;
+            globalMaxIncome = Math.max(globalMaxIncome, avg); // håll koll på max för yScale
+
+            yearlyAverages.push({
+                year: year,
+                averageIncome: Math.round(avg)
+            });
+        }
+
+        managerDataset.push({
+            managerId: managerID,
+            managerName: managerName,
+            yearlyAverages: yearlyAverages
+        });
+    }
+
+    // Skala
+    const xScale = d3.scalePoint()
+        .domain(years)
+        .range([wPadding, wPadding + wViz]);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, globalMaxIncome])
+        .range([hPadding + hViz, hPadding]);
+
+    // Axlar
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d")); // formaterar år som heltal
+    earningSvg.append("g")
+        .attr("transform", `translate(0, ${hPadding + hViz})`)
+        .call(xAxis);
+
+    const yAxis = d3.axisLeft(yScale);
+    earningSvg.append("g")
+        .attr("transform", `translate(${wPadding}, 0)`)
+        .call(yAxis);
+
+    // Line generator
+    const dMaker = d3.line()
+        .x(d => xScale(d.year))
+        .y(d => yScale(d.averageIncome));
+
+    // Färgskala
+    const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+
+    // Rita en linje för varje manager
+    managerDataset.forEach((managerData, i) => {
+        earningSvg.append("path")
+            .datum(managerData.yearlyAverages)
+            .attr("fill", "none")
+            .attr("stroke", colorScale(i))
+            .attr("stroke-width", 2)
+            .attr("d", dMaker);
+
+        // Lägg till namntext på slutet av linjen
+        const lastPoint = managerData.yearlyAverages[managerData.yearlyAverages.length - 1];
+        earningSvg.append("text")
+            .attr("x", xScale(lastPoint.year) + 5)
+            .attr("y", yScale(lastPoint.averageIncome))
+            .text(managerData.managerName)
+            .attr("font-size", "10px")
+            .attr("fill", colorScale(i));
+    });
+}
