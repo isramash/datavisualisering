@@ -93,6 +93,7 @@
     // const dMaker = d3.line()
     //     .x(d => )
 
+        "hello"
 }
 
 
@@ -125,19 +126,30 @@ function renderGraphs() {
         for (let year of years) {
             yearlyIncomes[year] = {
                 totalIncome: 0,
-                totalGigs: 0
+                totalGigs: 0,
+                amountOfDjs: 0
             };
         }
 
+
+
         for (let dj of managedDJs) {
             const djGigs = Gigs.filter(gig => gig.djID === dj.id);
+
+
+            let thisDjPlayedThisYear = false;
 
             for (let gig of djGigs) {
                 const year = new Date(gig.date).getFullYear();
                 if (year >= 2020 && year < 2025) {
                     yearlyIncomes[year].totalIncome += gig.djEarnings;
                     yearlyIncomes[year].totalGigs++;
+                    thisDjPlayedThisYear = true;
                 }
+            }
+
+            if (thisDjPlayedThisYear) {
+                yearlyIncomes[year].amountOfDjs++;
             }
         }
 
