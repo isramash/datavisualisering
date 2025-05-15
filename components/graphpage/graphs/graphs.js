@@ -1,168 +1,73 @@
-
-/* function renderGraphs() {
-    // Bestämmer storlekar på graferna
-    const wSvg = 600, hSvg = 400,
-        hViz = .8 * hSvg, wViz = .8 * wSvg,
-        hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2;
-
-    const earningSvg = d3.select("#graphpageCon").append("svg")
-        .attr("width", wSvg)
-        .attr("height", hSvg);
-
-    // Skapa ett nytt dataset
-    const managerDataset = [];
-
-    for (let manager of Managers) {
-        let managerID = manager.id;
-        let managerName = manager.name;
-
-        // Hitta alla DJs som har den här managern
-        const managedDJs = DJs.filter(dj => dj.managerID === managerID);
-
-        let totalIncome = 0;
-        let totalGigs = 0;
-
-        for (let dj of managedDJs) {
-            // Hitta gigs för denna DJ
-            const djGigs = Gigs.filter(gig => gig.djID === dj.id);
-
-            // Summera inkomst för varje gig
-            for (let gig of djGigs) {
-                totalIncome += gig.djEarnings;
-
-
-                totalGigs++;
-            }
-        }
-
-        const averageIncome = (managedDJs.length > 0) ? totalIncome / managedDJs.length : 0;
-
-        // Spara i dataset
-        managerDataset.push({
-            managerId: managerID,
-            managerName: managerName,
-            averageIncomePerDJ: Math.round(averageIncome),
-            nGigs: totalGigs
-        });
-
-        console.log(averageIncome);
-
-        
-    }
-
-    let maxAverageNumber = managerDataset[0].averageIncomePerDJ;
-    managerDataset.forEach(d => {
-        maxAverageNumber = Math.max(maxAverageNumber, d.averageIncomePerDJ);
-    });
-
-    console.log("max nummer:" + maxAverageNumber);
-
-
-    // Logga resultatet
-    // console.log("managerDataset:", managerDataset);
-
-
-    let years = [];
-
-    for (let year = 2020; year < 2025; year++) {
-        years.push(year);
-    }
-
-    console.log(years);
-
-
-    // Här kan du lägga till kod för att visualisera det med D3 eller liknande
-
-
-
-
-
-    let xScale = d3.scaleBand(years, [wPadding, wPadding + wViz]);
-    let yScale = d3.scaleLinear([0, (maxAverageNumber)], [hPadding + hViz, hPadding]);
-
-    let xAxis = d3.axisBottom(xScale);
-    let xGroup = earningSvg.append("g")
-        .call(xAxis)
-        .attr("transform", `translate(0, ${hPadding + hViz})`)
-    
-    let yAxis = d3.axisLeft(yScale);
-    let yGroup = earningSvg.append("g")
-        .call(yAxis)
-        .attr("transform", `translate(${wPadding}, 0)`)
-
-    // const dMaker = d3.line()
-    //     .x(d => )
-
-        "hello"
-}
-
-
-*/
-
 function renderGraphs() {
-    // Bestäm storlekar på SVG och grafyta
+    // Storlek och padding
     const wSvg = 600, hSvg = 400,
         hViz = 0.8 * hSvg, wViz = 0.8 * wSvg,
         hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2;
 
-    const earningSvg = d3.select("#graphpageCon").append("svg")
+    // Svg Earnings
+    const earningSvg = d3.select("#graphCon").append("svg")
         .attr("width", wSvg)
         .attr("height", hSvg);
+    
+    // Svg Gigs
+        const gigsSvg = d3.select("#graphCon").append("svg")
+        .attr("width", wSvg)
+        .attr("height", hSvg);
+    
 
+    // Deklarerar alla år
     const years = [2020, 2021, 2022, 2023, 2024];
-
     const managerDataset = [];
-
-    let globalMaxIncome = 0; // För y-axeln
+    let maxEarnings = 0;
+    let maxGigs = 0;
 
     for (let manager of Managers) {
         let managerID = manager.id;
         let managerName = manager.name;
-
         const managedDJs = DJs.filter(dj => dj.managerID === managerID);
 
-        // Skapa ett objekt för årsbaserad inkomst
-        let yearlyIncomes = {};
+        // Initiera inkomstdata per år
+        let yearlyData = {};
         for (let year of years) {
-            yearlyIncomes[year] = {
+            yearlyData[year] = {
                 totalIncome: 0,
                 totalGigs: 0,
-                amountOfDjs: 0
+                djList: [] // samlar unika DJ-id:n som spelat detta år
             };
         }
-
-
 
         for (let dj of managedDJs) {
             const djGigs = Gigs.filter(gig => gig.djID === dj.id);
 
-
-            let thisDjPlayedThisYear = false;
-
             for (let gig of djGigs) {
                 const year = new Date(gig.date).getFullYear();
-                if (year >= 2020 && year < 2025) {
-                    yearlyIncomes[year].totalIncome += gig.djEarnings;
-                    yearlyIncomes[year].totalGigs++;
-                    thisDjPlayedThisYear = true;
-                }
-            }
+                if (year >= 2020 && year <= 2024) {
+                    yearlyData[year].totalIncome += gig.djEarnings;
+                    yearlyData[year].totalGigs += 1;
 
-            if (thisDjPlayedThisYear) {
-                yearlyIncomes[year].amountOfDjs++;
+                    // Lägg till DJ om hen inte redan finns i listan för detta år
+                    if (!yearlyData[year].djList.includes(dj.id)) {
+                        yearlyData[year].djList.push(dj.id);
+                    }
+                }
             }
         }
 
         const yearlyAverages = [];
 
         for (let year of years) {
-            const data = yearlyIncomes[year];
-            const avg = (data.totalGigs > 0) ? data.totalIncome / data.totalGigs : 0;
-            globalMaxIncome = Math.max(globalMaxIncome, avg); // håll koll på max för yScale
+            const data = yearlyData[year];
+            const numDJs = data.djList.length;
+
+            const avgEarnings = (numDJs > 0) ? data.totalIncome / numDJs : 0;
+            const avgGigs = (numDJs > 0) ? data.totalGigs / numDJs : 0;
+            maxEarnings = Math.max(maxEarnings, avgEarnings);
+            maxGigs = Math.max(maxGigs, avgGigs);
 
             yearlyAverages.push({
                 year: year,
-                averageIncome: Math.round(avg)
+                averageIncome: Math.round(avgEarnings),
+                averageGigs: avgGigs
             });
         }
 
@@ -178,45 +83,69 @@ function renderGraphs() {
         .domain(years)
         .range([wPadding, wPadding + wViz]);
 
-    const yScale = d3.scaleLinear()
-        .domain([0, globalMaxIncome])
+    const yScaleEarnings = d3.scaleLinear()
+        .domain([0, maxEarnings])
         .range([hPadding + hViz, hPadding]);
 
+    const yScaleGigs = d3.scaleLinear()
+        .domain([0, maxGigs])
+        .range([hPadding + hViz, hPadding]);
+
+
     // Axlar
-    const xAxis = d3.axisBottom(xScale);
+    // Graf 1
     earningSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
-        .call(xAxis);
+        .classed("axis", true)
+        .call(d3.axisBottom(xScale));
 
-    const yAxis = d3.axisLeft(yScale);
     earningSvg.append("g")
         .attr("transform", `translate(${wPadding}, 0)`)
-        .call(yAxis);
+        .classed("axis", true)
+        .call(d3.axisLeft(yScaleEarnings));
+
+    // Graf 2
+    gigsSvg.append("g")
+        .attr("transform", `translate(0, ${hPadding + hViz})`)
+        .classed("axis", true)
+        .call(d3.axisBottom(xScale));
+
+    gigsSvg.append("g")
+        .attr("transform", `translate(${wPadding}, 0)`)
+        .classed("axis", true)
+        .call(d3.axisLeft(yScaleGigs));
 
     // Line generator
-    const dMaker = d3.line()
+    const dMakerEarnings = d3.line()
         .x(d => xScale(d.year))
-        .y(d => yScale(d.averageIncome));
+        .y(d => yScaleEarnings(d.averageIncome));
 
-    // Färgskala
-    const colorScale = d3.scaleOrdinal(d3.schemeTableau10);
+    const colorScaleEarnings = d3.scaleOrdinal(d3.schemeTableau10);
 
-    // Rita en linje för varje manager
+    // Rita linjer
     managerDataset.forEach((managerData, i) => {
         earningSvg.append("path")
-            .datum(managerData.yearlyAverages)
+            .data([managerData.yearlyAverages])
             .attr("fill", "none")
-            .attr("stroke", colorScale(i))
+            .attr("stroke", colorScaleEarnings(i))
             .attr("stroke-width", 2)
-            .attr("d", dMaker);
+            .attr("d", dMakerEarnings);
+    });
 
-        // Lägg till namntext på slutet av linjen
-        const lastPoint = managerData.yearlyAverages[managerData.yearlyAverages.length - 1];
-        earningSvg.append("text")
-            .attr("x", xScale(lastPoint.year) + 5)
-            .attr("y", yScale(lastPoint.averageIncome))
-            .text(managerData.managerName)
-            .attr("font-size", "10px")
-            .attr("fill", colorScale(i));
+    // Line generator
+    const dMakerGigs = d3.line()
+        .x(d => xScale(d.year))
+        .y(d => yScaleGigs(d.averageGigs));
+
+    const colorScaleGigs = d3.scaleOrdinal(d3.schemeTableau10);
+
+    // Rita linjer
+    managerDataset.forEach((managerData, i) => {
+        gigsSvg.append("path")
+            .data([managerData.yearlyAverages])
+            .attr("fill", "none")
+            .attr("stroke", colorScaleGigs(i))
+            .attr("stroke-width", 2)
+            .attr("d", dMakerGigs);
     });
 }
