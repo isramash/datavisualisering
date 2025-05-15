@@ -1,10 +1,10 @@
-// // Bestämma storlekar
+// Bestämma storlekar
 // const wSvg = 600, hSvg = 400,
 //       hViz = .8 * hSvg, wViz = .8 * wSvg,
 //       hPadding = (hSvg - hViz) / 2, wPadding = (wSvg - wViz) / 2
 // ;
 
-// // Get the Dataset
+// Get the Dataset
 // const managerDataset = [];
 
 // for (let manager of Managers) {
@@ -48,20 +48,20 @@
 //     });
 //   }
 
-//   // Sortera för korrekt linje
+//   Sortera för korrekt linje
 //   dataset.managerEarnings.sort((a, b) => a.year - b.year);
 //   dataset.nGigs.sort((a, b) => a.year - b.year);
 
 //   managerDataset.push(dataset);
 // }
 
-// // Förbered en array med alla värden på X-skalan (years)
+// Förbered en array med alla värden på X-skalan (years)
 // let years = [];
 // for (let year = 2015; year < 2025; year++) {
 //   years.push(year);
 // }
 
-// // Hitta maxvärden
+// Hitta maxvärden
 // let maxEarnings = 0;
 // let maxGigs = 0;
 
@@ -76,7 +76,7 @@
 
 
 
-// // Skapa knappar
+// Skapa knappar
 // d3.select("main").append("div")
 //   .selectAll("div")
 //   .data(managerDataset)
@@ -109,7 +109,7 @@
 //     gigsPoints.attr("visibility", newValue);
 //   });
 
-// // Skapa två SVG:er
+// Skapa två SVG:er
 // const svg = d3.select("main").append("svg")
 //   .attr("width", wSvg)
 //   .attr("height", hSvg);
@@ -118,12 +118,12 @@
 //   .attr("width", wSvg)
 //   .attr("height", hSvg);
 
-// // Skala
+// Skala
 // let xScale = d3.scaleBand().domain(years).range([wPadding, wPadding + wViz]);
 // let yScale = d3.scaleLinear().domain([0, maxEarnings]).range([hPadding + hViz, hPadding]);
 // let yScaleGigs = d3.scaleLinear().domain([0, maxGigs]).range([hPadding + hViz, hPadding]);
 
-// // x-axel
+// x-axel
 // svg.append("g")
 //   .call(d3.axisBottom(xScale))
 //   .attr("transform", `translate(0, ${hPadding + hViz})`);
@@ -132,7 +132,7 @@
 //   .call(d3.axisBottom(xScale))
 //   .attr("transform", `translate(0, ${hPadding + hViz})`);
 
-// // y-axel
+// y-axel
 // svg.append("g")
 //   .call(d3.axisLeft(yScale))
 //   .attr("transform", `translate(${wPadding}, 0)`);
@@ -141,7 +141,7 @@
 //   .call(d3.axisLeft(yScaleGigs))
 //   .attr("transform", `translate(${wPadding}, 0)`);
 
-// // Linjegeneratorer
+// Linjegeneratorer
 // const dMaker = d3.line()
 //   .x(d => xScale(d.year) + xScale.bandwidth() / 2)
 //   .y(d => yScale(d.totalEarnings));
@@ -150,7 +150,7 @@
 //   .x(d => xScale(d.year) + xScale.bandwidth() / 2)
 //   .y(d => yScaleGigs(d.totalGigs));
 
-// // Linjer för earnings
+// Linjer för earnings
 // svg.append("g")
 //   .selectAll("path")
 //   .data(managerDataset)
@@ -164,7 +164,7 @@
 //   .attr("stroke-width", 2)
 //   .attr("visibility", "hidden");
 
-// // Linjer för gigs
+// Linjer för gigs
 // svg2.append("g")
 //   .selectAll("path")
 //   .data(managerDataset)
@@ -178,7 +178,7 @@
 //   .attr("stroke-width", 2)
 //   .attr("visibility", "hidden");
 
-// // Earnings-points
+// Earnings-points
 // svg.append("g")
 //   .selectAll("g")
 //   .data(managerDataset)
@@ -196,7 +196,7 @@
 //   .attr("fill", "red")
 //   .attr("visibility", "hidden");
 
-// // Gigs-points
+// Gigs-points
 // svg2.append("g")
 //   .selectAll("g")
 //   .data(managerDataset)
@@ -216,103 +216,103 @@
 
 
 
-//   // function getGigsByYear() {
-//   //   // Initialize an object to hold the gig counts by manager and year
-//   //   const gigsByYear = {};
+//   function getGigsByYear() {
+//     // Initialize an object to hold the gig counts by manager and year
+//     const gigsByYear = {};
   
-//   //   // Loop through all the gigs
-//   //   Gigs.forEach(gig => {
-//   //     const year = new Date(gig.date).getFullYear();  // Extract the year from the gig date
-//   //     const dj = DJs.find(dj => dj.id === gig.djID);  // Find the DJ for the gig
-//   //     const managerID = dj.managerID;  // Get the manager's ID from the DJ
+//     // Loop through all the gigs
+//     Gigs.forEach(gig => {
+//       const year = new Date(gig.date).getFullYear();  // Extract the year from the gig date
+//       const dj = DJs.find(dj => dj.id === gig.djID);  // Find the DJ for the gig
+//       const managerID = dj.managerID;  // Get the manager's ID from the DJ
   
-//   //     // Initialize the manager's record if it doesn't exist yet
-//   //     if (!gigsByYear[managerID]) {
-//   //       gigsByYear[managerID] = {};
-//   //     }
+//       // Initialize the manager's record if it doesn't exist yet
+//       if (!gigsByYear[managerID]) {
+//         gigsByYear[managerID] = {};
+//       }
   
-//   //     // Initialize the year count if it doesn't exist
-//   //     if (!gigsByYear[managerID][year]) {
-//   //       gigsByYear[managerID][year] = 0;
-//   //     }
+//       // Initialize the year count if it doesn't exist
+//       if (!gigsByYear[managerID][year]) {
+//         gigsByYear[managerID][year] = 0;
+//       }
   
-//   //     // Increment the gig count for the specific year and manager
-//   //     gigsByYear[managerID][year]++;
-//   //   });
+//       // Increment the gig count for the specific year and manager
+//       gigsByYear[managerID][year]++;
+//     });
   
-//   //   // Format the result as an array of objects with manager's name and the gig counts per year
-//   //   return Managers.map(manager => {
-//   //     const gigCounts = gigsByYear[manager.id] || {};
-//   //     const result = {};
+//     // Format the result as an array of objects with manager's name and the gig counts per year
+//     return Managers.map(manager => {
+//       const gigCounts = gigsByYear[manager.id] || {};
+//       const result = {};
   
-//   //     // Collect the gig counts for each year
-//   //     Object.keys(gigCounts).forEach(year => {
-//   //       result[year] = gigCounts[year];
-//   //     });
+//       // Collect the gig counts for each year
+//       Object.keys(gigCounts).forEach(year => {
+//         result[year] = gigCounts[year];
+//       });
   
-//   //     return {
-//   //       managerName: manager.name,
-//   //       gigCounts: result
-//   //     };
-//   //   });
-//   // }
+//       return {
+//         managerName: manager.name,
+//         gigCounts: result
+//       };
+//     });
+//   }
   
-//   // // console.log(getGigsByYear());
+//   // console.log(getGigsByYear());
   
-//   // function getAverageEarningsPerManagerPerYear() {
-//   //   // Mappa DJ-id till manager-id
-//   //   const djToManager = {};
-//   //   DJs.forEach(dj => {
-//   //     djToManager[dj.id] = dj.managerID;
-//   //   });
+  function getAverageEarningsPerManagerPerYear() {
+    // Mappa DJ-id till manager-id
+    const djToManager = {};
+    DJs.forEach(dj => {
+      djToManager[dj.id] = dj.managerID;
+    });
   
-//   //   // Mappa manager-id till manager-namn
-//   //   const managerIdToName = {};
-//   //   Managers.forEach(manager => {
-//   //     managerIdToName[manager.id] = manager.name;
-//   //   });
+    // Mappa manager-id till manager-namn
+    const managerIdToName = {};
+    Managers.forEach(manager => {
+      managerIdToName[manager.id] = manager.name;
+    });
   
-//   //   // Struktur: { managerName: { year: { [djID]: totalEarnings } } }
-//   //   const data = {};
+    // Struktur: { managerName: { year: { [djID]: totalEarnings } } }
+    const data = {};
   
-//   //   Gigs.forEach(gig => {
-//   //     const djID = gig.djID;
-//   //     const managerID = djToManager[djID];
-//   //     const managerName = managerIdToName[managerID];
-//   //     if (!managerName) return;
+    Gigs.forEach(gig => {
+      const djID = gig.djID;
+      const managerID = djToManager[djID];
+      const managerName = managerIdToName[managerID];
+      if (!managerName) return;
   
-//   //     const year = new Date(gig.date).getFullYear();
+      const year = new Date(gig.date).getFullYear();
   
-//   //     if (!data[managerName]) data[managerName] = {};
-//   //     if (!data[managerName][year]) data[managerName][year] = {};
-//   //     if (!data[managerName][year][djID]) data[managerName][year][djID] = 0;
+      if (!data[managerName]) data[managerName] = {};
+      if (!data[managerName][year]) data[managerName][year] = {};
+      if (!data[managerName][year][djID]) data[managerName][year][djID] = 0;
   
-//   //     data[managerName][year][djID] += gig.djEarnings;
-//   //   });
+      data[managerName][year][djID] += gig.djEarnings;
+    });
   
-//   //   // Bygg resultatet
-//   //   const result = Object.entries(data).map(([managerName, yearsData]) => {
-//   //     const earningsPerYear = Object.entries(yearsData).map(([year, djEarningsMap]) => {
-//   //       const total = Object.values(djEarningsMap).reduce((a, b) => a + b, 0);
-//   //       const count = Object.values(djEarningsMap).length;
-//   //       const average = total / count;
-//   //       return {
-//   //         year: parseInt(year),
-//   //         averageEarnings: average
-//   //       };
-//   //     });
+    // Bygg resultatet
+    const result = Object.entries(data).map(([managerName, yearsData]) => {
+      const earningsPerYear = Object.entries(yearsData).map(([year, djEarningsMap]) => {
+        const total = Object.values(djEarningsMap).reduce((a, b) => a + b, 0);
+        const count = Object.values(djEarningsMap).length;
+        const average = total / count;
+        return {
+          year: parseInt(year),
+          averageEarnings: average
+        };
+      });
   
-//   //     // Sortera år om du vill
-//   //     earningsPerYear.sort((a, b) => a.year - b.year);
+      // Sortera år om du vill
+      earningsPerYear.sort((a, b) => a.year - b.year);
   
-//   //     return {
-//   //       managerName,
-//   //       earningsPerYear
-//   //     };
-//   //   });
+      return {
+        managerName,
+        earningsPerYear
+      };
+    });
   
-//   //   return result;
-//   // }
+    return result;
+  }
   
 
   

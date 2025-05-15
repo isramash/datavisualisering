@@ -1,33 +1,4 @@
 
-/* 
-const Cities = [
-  {"name":"Khansaar","id":105,"population":461},
-  {"name":"Krzystanopolis","id":192,"population":382},
-  {"name":"Asteroid City","id":202,"population":355},
-  {"name":"Sunnydale","id":249,"population":414},
-  {"name":"Rimini","id":276,"population":330},
-  {"name":"Belleville","id":338,"population":351},
-  {"name":"Sao Adão","id":440,"population":326},
-  {"name":"Moesko","id":441,"population":295},
-  {"name":"Kaabuli","id":540,"population":330},
-  {"name":"Pokyo","id":554,"population":412},
-  {"name":"Agrabah","id":568,"population":257},
-  {"name":"Mos Eisley","id":587,"population":411},
-  {"name":"Dunauvarosz","id":602,"population":348},
-  {"name":"Bagdogski","id":630,"population":367},
-  {"name":"Karatas","id":653,"population":329},
-  {"name":"Ville Rose","id":669,"population":418},
-  {"name":"Kosmolac","id":755,"population":345},
-  {"name":"Kattstad","id":791,"population":303},
-  {"name":"Brightburn","id":830,"population":351},
-  {"name":"Ciudad Encantada","id":836,"population":396},
-  {"name":"Atlantika","id":869,"population":335},
-  {"name":"Alphaville","id":927,"population":322},
-  {"name":"Santo Tome","id":951,"population":415},
-  {"name":"Chong Guo","id":959,"population":392}
-];
-*/
-
 const citiesByContinent = {
   Europe: [
     { "name": "Khansaar", "id": 105, "population": 461 },
