@@ -3,9 +3,7 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 12vh;
 }
 
 p {
@@ -34,6 +32,8 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 12vh;
+    margin-top: 20vh;
 }
 
 #reviewCon {
@@ -42,6 +42,8 @@ p {
     display: flex;
     flex-direction: column;
     gap: 5vh;
+    margin-bottom: 10vh;
+
 }
 
 #firstReview,
