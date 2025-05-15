@@ -93,7 +93,6 @@ function renderGraphs() {
     // const dMaker = d3.line()
     //     .x(d => )
 
-        "hello"
 }
 
 
