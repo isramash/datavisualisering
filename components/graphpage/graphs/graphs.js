@@ -5,13 +5,13 @@ function renderGraphs() {
 
     earningSvg = d3.select("#graphCon").append("svg")
         .attr("width", wSvg)
-        .attr("height", hSvg);
+        .attr("height", hSvg)
+        .attr("id", "earningsSvg");
 
-    // Svg Gigs
-    const gigsSvg = d3.select("#graphCon").append("svg")
+    gigsSvg = d3.select("#graphCon").append("svg")
         .attr("width", wSvg)
-        .attr("height", hSvg);
-
+        .attr("height", hSvg)
+        .attr("id", "gigsSvg");
 
     const years = [2020, 2021, 2022, 2023, 2024];
     let maxEarnings = 0, maxGigs = 0;
@@ -48,18 +48,7 @@ function renderGraphs() {
             const avgGigs = numDJs > 0 ? data.totalGigs / numDJs : 0;
             maxEarnings = Math.max(maxEarnings, avgEarnings);
             maxGigs = Math.max(maxGigs, avgGigs);
-
-            const signedDjs = data.djList.map(djID => {
-                const dj = DJs.find(d => d.id === djID);
-                return dj.name;
-            })
-
-            yearlyAverages.push({
-                year: year,
-                averageIncome: Math.round(avgEarnings),
-                averageGigs: avgGigs,
-                signedDjs: signedDjs
-            });
+            yearlyAverages.push({ year, averageIncome: Math.round(avgEarnings), averageGigs: avgGigs });
         }
 
         managerDataset.push({
@@ -69,10 +58,7 @@ function renderGraphs() {
         });
     }
 
-    console.log(managerDataset);
-
-    // Skala
-    const xScale = d3.scalePoint()
+    xScale = d3.scalePoint()
         .domain(years)
         .range([wPadding, wPadding + wViz]);
 

@@ -19,8 +19,8 @@ function graphpage() {
     graphpageCon.append(graphCon);
     renderGraphs();
 
-    let infoCon = document.createElement("div");
-    infoCon
+    // let infoCon = document.createElement("div");
+    // infoCon
 }
 
 function getAvailableColor() {
