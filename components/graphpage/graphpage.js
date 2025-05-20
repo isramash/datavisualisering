@@ -8,15 +8,19 @@ let earningSvg, gigsSvg;
 
 function graphpage() {
     let main = document.querySelector("main");
+    
     let graphpageCon = document.createElement("div");
     graphpageCon.id = "graphpageCon";
     let graphCon = document.createElement("div");
     graphCon.id = "graphCon";
-
+    
     main.append(graphpageCon);
     renderManagers();
     graphpageCon.append(graphCon);
     renderGraphs();
+
+    let infoCon = document.createElement("div");
+    infoCon
 }
 
 function getAvailableColor() {
