@@ -1,5 +1,19 @@
 
 #graphCon {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 14px;
+
     justify-content: center;
+    align-items: center;
+
+    margin-top: 0;
+}
+
+#earningsSvg, #gigsSvg, .graphInfo {
+    justify-self: center;
+}
+
+.graphInfo {
+    margin-top: 32px;
 }

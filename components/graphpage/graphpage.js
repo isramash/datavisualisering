@@ -13,14 +13,22 @@ function graphpage() {
     graphpageCon.id = "graphpageCon";
     let graphCon = document.createElement("div");
     graphCon.id = "graphCon";
-    
+
+    let earningsInfo = document.createElement("div");
+    earningsInfo.className = "graphInfo paragraphs";
+    earningsInfo.textContent = "Average income value of the managers signed DJ:s for the last 5 years";
+
+    let gigsInfo = document.createElement("div");
+    gigsInfo.className = "graphInfo paragraphs";
+    gigsInfo.textContent = "Total gigs that the manager have played for the last 5 years";
+
     main.append(graphpageCon);
     renderManagers();
     graphpageCon.append(graphCon);
     renderGraphs();
-
-    // let infoCon = document.createElement("div");
-    // infoCon
+    
+    graphCon.append(earningsInfo);
+    graphCon.append(gigsInfo);
 }
 
 function getAvailableColor() {
