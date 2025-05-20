@@ -21,6 +21,7 @@ function profilepage(manager) {
         })
     }
 
+
     let main = document.querySelector('main');
 
     let container = document.createElement('div');
@@ -28,13 +29,13 @@ function profilepage(manager) {
 
     container.id = 'ProfilePage';
     container.innerHTML = `
-                < div id = 'uppButton' >
+                <div id = 'uppButton'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
                         <path d="M12 30L24 18L36 30" stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div >
                 <div id = 'firstCon'>
-                    <img src = '/media/profile.png'>
+                    <img src = '../../avatar.avif'>
                     <div id ='aboutCon'>
                         <p id = 'managerName' style ='color: var(--textGray);     font-family: var(--fontMaven);     font-size: 3.78vw;  font-weight: 500;'> ${manager.name}</p>
                         <p id = 'aboutManager'>${manager.about}</p>

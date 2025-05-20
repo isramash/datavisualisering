@@ -8,7 +8,7 @@
 
 p {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.30vw;
+    font-size: 20px;
 }
 
 #subheadingCon p,
@@ -18,12 +18,12 @@ p {
 
 #subheadingCon p {
     color: var(--textWhite);
-    font-size: 2.78vw;
+    font-size: 48px;
 }
 
 #managerTextCon p {
     color: var(--textGray);
-    font-size: 11.11vw;
+    font-size: 160px;
     margin: 0;
 }
 
