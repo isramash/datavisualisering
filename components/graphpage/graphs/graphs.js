@@ -8,12 +8,12 @@ function renderGraphs() {
     const earningSvg = d3.select("#graphCon").append("svg")
         .attr("width", wSvg)
         .attr("height", hSvg);
-    
+
     // Svg Gigs
-        const gigsSvg = d3.select("#graphCon").append("svg")
+    const gigsSvg = d3.select("#graphCon").append("svg")
         .attr("width", wSvg)
         .attr("height", hSvg);
-    
+
 
     // Deklarerar alla år
     const years = [2020, 2021, 2022, 2023, 2024];
@@ -64,10 +64,16 @@ function renderGraphs() {
             maxEarnings = Math.max(maxEarnings, avgEarnings);
             maxGigs = Math.max(maxGigs, avgGigs);
 
+            const signedDjs = data.djList.map(djID => {
+                const dj = DJs.find(d => d.id === djID);
+                return dj.name;
+            })
+
             yearlyAverages.push({
                 year: year,
                 averageIncome: Math.round(avgEarnings),
-                averageGigs: avgGigs
+                averageGigs: avgGigs,
+                signedDjs: signedDjs
             });
         }
 
@@ -77,6 +83,8 @@ function renderGraphs() {
             yearlyAverages: yearlyAverages
         });
     }
+
+    console.log(managerDataset);
 
     // Skala
     const xScale = d3.scalePoint()

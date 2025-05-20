@@ -1,5 +1,5 @@
 
-function profilepage (manager) {
+function profilepage(manager) {
 
     // Varför funkar detta?
     let existingProfile = document.querySelector('#ProfilePage');
@@ -9,7 +9,7 @@ function profilepage (manager) {
 
 
     let main = document.querySelector('main');
-    
+
     let container = document.createElement('div');
     container.innerHTML = "";
 
