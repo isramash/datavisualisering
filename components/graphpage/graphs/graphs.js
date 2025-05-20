@@ -41,6 +41,7 @@ function renderGraphs() {
         }
 
         const yearlyAverages = [];
+        let signedDjs = [];
         for (let year of years) {
             const data = yearlyData[year];
             const numDJs = data.djList.length;
@@ -48,7 +49,13 @@ function renderGraphs() {
             const avgGigs = numDJs > 0 ? data.totalGigs / numDJs : 0;
             maxEarnings = Math.max(maxEarnings, avgEarnings);
             maxGigs = Math.max(maxGigs, avgGigs);
-            yearlyAverages.push({ year, averageIncome: Math.round(avgEarnings), averageGigs: avgGigs });
+
+            signedDjs = data.djList.map(djID => {
+                const dj = DJs.find(d => d.id === djID);
+                return dj.name;
+            })
+
+            yearlyAverages.push({ year, averageIncome: Math.round(avgEarnings), averageGigs: avgGigs, signedDjs: signedDjs });
         }
 
         managerDataset.push({
@@ -57,6 +64,8 @@ function renderGraphs() {
             yearlyAverages: yearlyAverages
         });
     }
+
+    console.log(managerDataset);
 
     xScale = d3.scalePoint()
         .domain(years)
