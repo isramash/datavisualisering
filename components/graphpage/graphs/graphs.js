@@ -70,22 +70,54 @@ function renderGraphs() {
         .domain([0, maxGigs])
         .range([hPadding + hViz, hPadding]);
 
-    // Axlar
+    // Axlar – Earnings
     earningSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
         .classed("axis", true)
         .call(d3.axisBottom(xScale));
+
     earningSvg.append("g")
         .attr("transform", `translate(${wPadding}, 0)`)
         .classed("axis", true)
         .call(d3.axisLeft(yScaleEarnings));
 
+    // Axeltexter – Earnings
+earningSvg.append("text")
+    .attr("x", xScale(2024) + 30) 
+    .attr("y", hPadding + hViz + 5) 
+    .attr("text-anchor", "start")
+    .classed("paragraphsAxis", true)
+    .text("Year");
+
+earningSvg.append("text")
+    .attr("x", wPadding) // i linje med y-axeln
+    .attr("y", yScaleEarnings(maxEarnings) - 20)
+    .attr("text-anchor", "end")
+    .classed("paragraphsAxis", true)
+    .text("Earnings");
+
+    // Axlar – Gigs
     gigsSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
         .classed("axis", true)
         .call(d3.axisBottom(xScale));
+
     gigsSvg.append("g")
         .attr("transform", `translate(${wPadding}, 0)`)
         .classed("axis", true)
         .call(d3.axisLeft(yScaleGigs));
+
+   gigsSvg.append("text")
+    .attr("x", xScale(2024) + 30)
+    .attr("y", hPadding + hViz + 5)
+    .attr("text-anchor", "start")
+    .classed("paragraphsAxis", true)
+    .text("Year");
+
+gigsSvg.append("text")
+    .attr("x", wPadding)
+    .attr("y", yScaleGigs(maxGigs) - 20)
+    .attr("text-anchor", "end")
+    .classed("paragraphsAxis", true)
+    .text("Gigs");
 }
