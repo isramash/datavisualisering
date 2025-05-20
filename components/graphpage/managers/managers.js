@@ -1,12 +1,12 @@
 function renderManagers() {
   d3.select("#graphpageCon").append("div")
-    .attr("id", "managerCon")  
+    .attr("id", "managerCon")
     .selectAll("div")
     .data(Managers)
     .enter()
     .append("div")
     .attr("class", "manager")
-    .each(function(d, i) {
+    .each(function (d, i) {
       const managerDiv = d3.select(this);
 
       managerDiv.append("p")
