@@ -12,7 +12,13 @@ function renderManagers() {
       managerDiv.append("p")
         .html(`&#8230;`)
         .attr("class", "managerInfo")
-        .on("click", () => profilepage(d));
+        .on("click", () => {
+          profilepage(d)
+          window.scrollTo({
+            top: window.innerHeight * 2,
+            behavior: "smooth"
+          });
+        })
 
       managerDiv.append("img")
         .attr("src", d.image)

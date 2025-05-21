@@ -8,7 +8,6 @@ function profilepage(manager) {
     }
 
     const fullManagerData = managerDataset.find(x => x.managerId === manager.id);
-    console.log(fullManagerData);
 
     let signedDjsList = "";
 
@@ -58,4 +57,12 @@ function profilepage(manager) {
             `;
 
     main.append(container)
+
+    let uppButton = document.querySelector("#uppButton");
+    uppButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth"
+        });
+    })
 }

@@ -1,8 +1,6 @@
-const activeManagers = [];
-const maxActive = 4;
-const colorScale = ["yellow", "blue", "green", "red"];
 const managerActiveColor = {};
 let managerDataset = [];
+const activeManagers = [];
 let xScale, yScaleEarnings, yScaleGigs;
 let earningSvg, gigsSvg;
 
@@ -20,7 +18,7 @@ function graphpage() {
 
     let gigsInfo = document.createElement("div");
     gigsInfo.className = "graphInfo paragraphs";
-    gigsInfo.textContent = "Total gigs that the manager have played for the last 5 years";
+    gigsInfo.textContent = "Average gigs per DJ that the manager have booked for the last 5 years";
 
     main.append(graphpageCon);
     renderManagers();
@@ -32,6 +30,7 @@ function graphpage() {
 }
 
 function getAvailableColor() {
+    const colorScale = ["yellow", "blue", "green", "red"];
     const usedColors = [];
     for (const key in managerActiveColor) {
         usedColors.push(managerActiveColor[key]);
@@ -41,60 +40,5 @@ function getAvailableColor() {
         if (!usedColors.includes(color)) {
             return color;
         }
-    }
-}
-
-function toggleManagerGraph(manager) {
-    const isActive = activeManagers.includes(manager.id);
-
-    if (!isActive && activeManagers.length >= maxActive) return;
-
-    if (!isActive) {
-        const color = getAvailableColor();
-
-        activeManagers.push(manager.id);
-        managerActiveColor[manager.id] = color;  // sätt färg i objektet
-
-        const data = managerDataset.find(d => d.managerId === manager.id);
-
-        const earningsLine = d3.line()
-            .x(d => xScale(d.year))
-            .y(d => yScaleEarnings(d.averageIncome));
-
-        const gigsLine = d3.line()
-            .x(d => xScale(d.year))
-            .y(d => yScaleGigs(d.averageGigs));
-
-        earningSvg.append("path")
-            .data([data.yearlyAverages])
-            .attr("class", `line${manager.id}`)
-            .attr("fill", "none")
-            .attr("stroke", color)
-            .attr("stroke-width", 3)
-            .attr("d", earningsLine)
-
-
-        gigsSvg.append("path")
-            .data([data.yearlyAverages])
-            .attr("class", `line${manager.id}`)
-            .attr("fill", "none")
-            .attr("stroke", color)
-            .attr("stroke-width", 3)
-            .attr("d", gigsLine);
-
-        d3.select(`#img${manager.id}`).style("border", `6px solid ${color}`);
-
-        console.log(managerActiveColor);
-
-    } else {
-        const index = activeManagers.indexOf(manager.id);
-        if (index !== -1) activeManagers.splice(index, 1); // Ta bort manager
-
-        const color = managerActiveColor[manager.id];
-        delete managerActiveColor[manager.id];  // ta bort från objektet
-
-        earningSvg.select(`.line${manager.id}`).remove();
-        gigsSvg.select(`.line${manager.id}`).remove();
-        d3.select(`#img${manager.id}`).style("border", "none");
     }
 }
