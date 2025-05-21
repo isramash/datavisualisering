@@ -30,7 +30,7 @@ function graphpage() {
 }
 
 function getAvailableColor() {
-    const colorScale = ["yellow", "blue", "green", "red"];
+    const colorScale = ["#FBFF00", "#716BE4", "#90C547", "#FF57CC"];
     const usedColors = [];
     for (const key in managerActiveColor) {
         usedColors.push(managerActiveColor[key]);
