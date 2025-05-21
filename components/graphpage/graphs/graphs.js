@@ -46,10 +46,21 @@ function renderGraphs() {
         for (let year of years) {
             const data = yearlyData[year];
             const numDJs = data.djList.length;
-            const avgEarnings = numDJs > 0 ? data.totalIncome / numDJs : 0;
-            const avgGigs = numDJs > 0 ? data.totalGigs / numDJs : 0;
+
+            let avgEarnings = 0;
+            let avgGigs = 0;
+
+            if (numDJs > 0) {
+                avgEarnings = data.totalIncome / numDJs;
+                avgGigs = data.totalGigs / numDJs;
+            } else {
+                avgEarnings = 0;
+                avgGigs = 0;
+            }
+
             maxEarnings = Math.max(maxEarnings, avgEarnings);
             maxGigs = Math.max(maxGigs, avgGigs);
+
 
             signedDjs = data.djList.map(djID => {
                 const dj = DJs.find(d => d.id === djID);
@@ -185,7 +196,7 @@ function toggleManagerGraph(manager) {
                     behavior: "smooth"
                 });
             });
-            
+
         gigsSvg.append("path")
             .data([data.yearlyAverages])
             .attr("class", `line${manager.id}`)

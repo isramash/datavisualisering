@@ -42,64 +42,63 @@ const Managers = [
     id: 1323,
     name: "Fatima Johansson",
     image: "avatar.avif",
-    about: "Jag heter Fatima Johansson och har en bakgrund inom evenemangsplanering och artistutveckling. Mitt fokus ligger på att skapa trygga miljöer där kreativa idéer kan blomstra. Jag arbetar nära mina artister för att bygga långsiktiga strategier och meningsfulla samarbeten. Med ett öga för detaljer och en känsla för trender, hjälper jag dem att nå ut på rätt sätt. Jag tror på transparens, lyhördhet och på kraften i ett starkt team. För mig handlar det om att skapa äkta upplevelser, både för publiken och för de artister jag representerar."
+    about: "My name is Fatima Johansson and I have a background in event planning and artist development. My focus is on creating safe environments where creative ideas can flourish. I work closely with my artists to build long-term strategies and meaningful collaborations. With an eye for detail and a sense for trends, I help them reach out in the right way. I believe in transparency, responsiveness, and the power of a strong team. For me, it’s about creating authentic experiences for both the audience and the artists I represent."
   },
   {
     id: 1609,
     name: "Kerstin Rodriguez",
     image: "avatar.avif",
-    about: "Jag heter Kerstin Rodriguez och jobbar med att utveckla artister inom urban musik. Med flera års erfarenhet av branschen har jag lärt mig vikten av nätverk, tajming och tydlig identitet. Jag ser varje samarbete som en möjlighet till tillväxt och innovation. För mig är det viktigt att artisten känner sig fri att uttrycka sig, samtidigt som vi bygger en hållbar karriär tillsammans. Jag tror på strategi, passion och hårt arbete – och att varje artist har en unik historia värd att lyfta fram."
+    about: "My name is Kerstin Rodriguez and I work with developing artists within urban music. With several years of industry experience, I have learned the importance of networking, timing, and a clear identity. I see every collaboration as an opportunity for growth and innovation. For me, it’s important that the artist feels free to express themselves while we build a sustainable career together. I believe in strategy, passion, and hard work – and that every artist has a unique story worth highlighting."
   },
   {
     id: 1656,
     name: "Maja Shankar",
     image: "avatar.avif",
-    about: "Jag heter Maja Shankar och arbetar som manager med fokus på elektronisk musik och livescener. Jag brinner för att skapa balans mellan kreativ frihet och professionell struktur. Genom åren har jag jobbat med både nya och etablerade artister, och jag värdesätter personliga relationer där tillit och respekt är centralt. Mitt mål är att varje artist ska känna sig stärkt, hörd och sedd – oavsett var i karriären de befinner sig. Jag tror på hållbar utveckling, långsiktig planering och att bygga karriärer med hjärta."
+    about: "My name is Maja Shankar and I work as a manager focusing on electronic music and live scenes. I am passionate about creating a balance between creative freedom and professional structure. Over the years, I have worked with both new and established artists, valuing personal relationships where trust and respect are central. My goal is that every artist feels empowered, heard, and seen – no matter where they are in their career. I believe in sustainable development, long-term planning, and building careers with heart."
   },
   {
     id: 3151,
     name: "Mahan Nilsson",
     image: "avatar.avif",
-    about: "Jag heter Mahan Nilsson och har min bakgrund inom teknik och musikproduktion. Som manager fokuserar jag på att bygga broar mellan artister och teknologiska plattformar för att maximera deras räckvidd. Jag arbetar nära mina artister med allt från turnéplanering till varumärkesstrategier. Jag tror på innovation, struktur och ett starkt nätverk. För mig handlar det inte bara om karriärsteg – det handlar om att skapa en hållbar plattform där artister kan utvecklas och nå sin fulla potential både kreativt och affärsmässigt."
+    about: "My name is Mahan Nilsson and I have a background in technology and music production. As a manager, I focus on building bridges between artists and technological platforms to maximize their reach. I work closely with my artists on everything from tour planning to brand strategies. I believe in innovation, structure, and a strong network. For me, it’s not just about career steps – it’s about creating a sustainable platform where artists can develop and reach their full potential both creatively and commercially."
   },
   {
     id: 6643,
     name: "Karl Petrovic",
     image: "avatar.avif",
-    about: "Jag heter Karl Petrovic och är manager med fokus på att optimera artisters arbetsflöden och karriärvägar. Med bakgrund inom logistik och affärsutveckling hjälper jag mina artister att bygga stabila grunder som håller över tid. Jag arbetar strukturerat men med kreativt sinne, och tror på vikten av balans mellan scenliv och privatliv. Jag ser varje samarbete som ett partnerskap, där öppenhet och förtroende är nyckeln. Mitt mål är att artisten ska känna sig trygg i varje steg – från första gig till internationell lansering."
+    about: "My name is Karl Petrovic and I am a manager focusing on optimizing artists' workflows and career paths. With a background in logistics and business development, I help my artists build stable foundations that last over time. I work in a structured but creative way, believing in the importance of balance between stage life and private life. I see every collaboration as a partnership where openness and trust are key. My goal is for the artist to feel secure at every step – from the first gig to international launch."
   },
   {
     id: 7787,
     name: "Sara Shirzad",
     image: "avatar.avif",
-    about: "Jag heter Sara Shirzad och jobbar som manager med särskilt fokus på inkluderande scenkonst och kvinnliga DJs. Jag tror starkt på representation och att ge plats åt röster som ofta förbises. Genom att bygga starka nätverk och trygga samarbeten skapar jag utrymme för mina artister att växa både konstnärligt och personligt. För mig är det viktigt att varje artist känner sig sedd, förstådd och fri att skapa på sina egna villkor. Jag brinner för rättvisa, kreativitet och långsiktig förändring inom musikindustrin."
+    about: "My name is Sara Shirzad and I work as a manager with a special focus on inclusive performing arts and female DJs. I strongly believe in representation and giving space to voices that are often overlooked. By building strong networks and safe collaborations, I create room for my artists to grow both artistically and personally. For me, it’s important that every artist feels seen, understood, and free to create on their own terms. I am passionate about justice, creativity, and long-term change within the music industry."
   },
   {
     id: 7836,
     name: "Omar Wennström",
     image: "avatar.avif",
-    about: "Jag heter Omar Wennström och arbetar med att hjälpa DJs och producenter att nå sin fulla potential. Jag har ett stort intresse för internationella marknader och jobbar aktivt med att bygga nätverk över gränserna. Som manager fokuserar jag på struktur, utveckling och långsiktighet. Jag tror på att skapa en trygg grund för artisten att växa ifrån, med tydliga mål och starkt stöd i ryggen. För mig är det viktigt att varje samarbete bygger på respekt, lyhördhet och gemensamma visioner."
+    about: "My name is Omar Wennström and I work to help DJs and producers reach their full potential. I have a strong interest in international markets and actively work on building networks across borders. As a manager, I focus on structure, development, and long-term perspectives. I believe in creating a secure foundation for the artist to grow from, with clear goals and strong support behind them. For me, it’s important that every collaboration is built on respect, responsiveness, and shared visions."
   },
   {
     id: 7909,
     name: "Tomek Garcia",
     image: "avatar.avif",
-    about: "Jag heter Tomek Garcia och arbetar som DJ-manager med fokus på att bygga starka, långsiktiga karriärer för mina artister. Genom åren har jag hjälpt DJs att nå ut globalt, särskilt i Europa och Sydostasien, där jag har ett brett kontaktnät. Jag tror på tydlig kommunikation, strategisk planering och att varje artist ska känna sig sedd och stöttad. För mig handlar det inte bara om gigs – det handlar om att skapa möjligheter där DJs verkligen får skina. Jag brinner för mångfald, nytänkande och att alltid hitta rätt scen för rätt sound."
+    about: "My name is Tomek Garcia and I work as a DJ manager focusing on building strong, long-term careers for my artists. Over the years, I have helped DJs reach global audiences, especially in Europe and Southeast Asia, where I have a broad network. I believe in clear communication, strategic planning, and that every artist should feel seen and supported. For me, it’s not just about gigs – it’s about creating opportunities where DJs truly get to shine. I am passionate about diversity, innovation, and always finding the right stage for the right sound."
   },
   {
     id: 8370,
     name: "Ivan Holmberg",
     image: "avatar.avif",
-    about: "Jag heter Ivan Holmberg och har en bakgrund inom ljuddesign och evenemangsproduktion. Som manager kombinerar jag teknisk expertis med konstnärlig förståelse för att skapa helhetslösningar för mina artister. Jag jobbar nära dem för att hitta rätt uttryck, rätt scen och rätt publik. Jag tror på innovation, respekt och tydlig kommunikation som grund för framgång. Min drivkraft är att hjälpa varje artist att förverkliga sin vision – både i studion och på scenen. Jag älskar att vara en del av den kreativa resan."
+    about: "My name is Ivan Holmberg and I have a background in sound design and event production. As a manager, I combine technical expertise with artistic understanding to create holistic solutions for my artists. I work closely with them to find the right expression, the right stage, and the right audience. I believe in innovation, respect, and clear communication as foundations for success. My drive is to help each artist realize their vision – both in the studio and on stage. I love being part of the creative journey."
   },
   {
     id: 9597,
     name: "Stella Dudek",
     image: "avatar.avif",
-    about: "Jag heter Stella Dudek och jobbar som manager med fokus på elektronisk musik och queer-kultur. Jag har ett passionerat engagemang för att lyfta fram röster och berättelser som ofta saknas i mainstream-scenen. Med ett starkt nätverk och lång erfarenhet skapar jag plattformar där artister kan blomstra på sina egna villkor. Jag tror på mod, autenticitet och långsiktigt arbete. För mig är varje artist ett unikt universum, och mitt jobb är att ge dem rätt verktyg och utrymme att glänsa."
+    about: "My name is Stella Dudek and I work as a manager focusing on electronic music and queer culture. I have a passionate commitment to highlighting voices and stories that are often missing from the mainstream scene. With a strong network and long experience, I create platforms where artists can flourish on their own terms. I believe in courage, authenticity, and long-term work. For me, every artist is a unique universe, and my job is to give them the right tools and space to shine."
   }
 ];
-
 
 const Producers = [
   { "id": 4842, "name": "Gigskaparna" },
