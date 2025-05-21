@@ -136,7 +136,9 @@ function toggleManagerGraph(manager) {
 
     const tooltip = d3.select("body")
         .append("div")
-        .attr("id", "tooltip");
+        .attr("id", "tooltip")
+        .html(`<div>${manager.name}</div><div>Klicka för att läsa mer</div>`)
+
 
     if (!active && activeManagers.length >= maxActive) return;
 
@@ -169,7 +171,6 @@ function toggleManagerGraph(manager) {
             })
             .on("mousemove", function (event) {
                 tooltip
-                    .html(`<div>${manager.name}</div><div>Klicka för att läsa mer</div>`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
@@ -198,7 +199,6 @@ function toggleManagerGraph(manager) {
             })
             .on("mousemove", function (event) {
                 tooltip
-                    .html(`<div>${manager.name}</div><div>Klicka för att läsa mer</div>`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })
