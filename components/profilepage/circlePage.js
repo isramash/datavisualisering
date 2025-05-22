@@ -56,10 +56,11 @@ function drawPieWithD3(dataArray) {
     const radius = Math.min(width, height) / 2;
 
     const total = dataArray.reduce((sum, d) => sum + d.gigs, 0);
+    const fixedColors = ["#E57373", "#FFA41D", "#716BE4", "#FF57CC", "#90C547", "#D9534F"];
 
     const colors = d3.scaleOrdinal()
         .domain(dataArray.map(d => d.continent))
-        .range(["#FFA41D", "#E57373", "#716BE4", "#90C547", "#FF57CC", "#D9534F"]);
+        .range(fixedColors);
 
     const svg = d3.select("#contentDiagram")
         .append("svg")
@@ -85,7 +86,7 @@ function drawPieWithD3(dataArray) {
         .attr('d', arc)
         .attr('fill', d => colors(d.data.continent))
         .attr("stroke", "#fff")
-        .style("stroke-width", "2px");
+        .style("stroke-width", "1px");
 
     svg.selectAll("text")
         .data(data_ready)
@@ -111,8 +112,10 @@ function continentList(dataArray) {
     const continentList = document.createElement('div');
     continentList.id = 'continentList';
 
+    const fixedColors = ["#E57373", "#FFA41D", "#716BE4", "#FF57CC", "#90C547", "#D9534F"];
+
     const colors = d3.scaleOrdinal()
-        .range(["#FFA41D", "#E57373", "#716BE4", "#90C547", "#FF57CC", "#D9534F"]);
+        .range(fixedColors);
 
     dataArray.forEach(continent => {
         const item = document.createElement("div");
