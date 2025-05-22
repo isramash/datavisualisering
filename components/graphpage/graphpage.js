@@ -19,22 +19,25 @@ function graphpage() {
 
     // Info container och ikon
     let infoDiv = document.createElement("div");
-    infoDiv.innerHTML = `<p>Click on one or multiple managers to see statistics</p><br><p>Maximum four active at the same time</p>`;
+    infoDiv.innerHTML = `<p>Click on one or multiple managers to see and compare statistics</p><br><p>Maximum four active at the same time</p>`;
     infoDiv.classList.add("infoDiv");
     infoDiv.style.display = "none";
 
     let infoIcon = document.createElement("div");
     infoIcon.classList.add("infoIcon");
-
-    // Startikon (info)
     infoIcon.innerHTML = getInfoIcon("info");
-
-    // Toggle-funktion
     infoIcon.addEventListener("click", () => {
         const isVisible = infoDiv.style.display === "block";
-        infoDiv.style.display = isVisible ? "none" : "block";
-        infoIcon.innerHTML = getInfoIcon(isVisible ? "info" : "close");
+
+        if (isVisible === true) {
+            infoDiv.style.display = "none";
+            infoIcon.innerHTML = getInfoIcon("info");
+        } else {
+            infoDiv.style.display = "block";
+            infoIcon.innerHTML = getInfoIcon("close");
+        }
     });
+
 
     graphpageCon.append(infoIcon);
     graphpageCon.append(infoDiv);
@@ -53,7 +56,6 @@ function graphpage() {
     graphCon.append(gigsInfo);
 }
 
-// Returnerar rätt SVG beroende på status
 function getInfoIcon(type) {
     if (type === "close") {
         return `
