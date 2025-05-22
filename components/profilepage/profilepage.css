@@ -61,10 +61,8 @@
     overflow: scroll;
 }
 
-#signedList>p,
-#latestList>p {
-
-    text-align: center;
+#signedList p,
+#latestList p {
     font-family: var(--fontMaven);
     font-size: 20px;
     font-style: normal;
@@ -76,4 +74,14 @@
 #signedListText p,
 #showsListText p {
     font-size: 16px;
+}
+
+#contentDiagram{
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+#continentList{
+    margin-top: 90px;
 }
