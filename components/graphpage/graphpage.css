@@ -1,6 +1,7 @@
 #graphpageCon {
     height: 100vh;
     width: 100vw;
+    position: relative;
 }
 
 .infoDiv {
@@ -9,7 +10,8 @@
     font-size: 14px;
 
     text-align: center;
-    margin: 5vh auto 0 auto;
+    margin: 0 auto;
+    padding-top: 5vh;
 }
 
 .infoDiv p:last-child {
@@ -20,4 +22,12 @@
 .infoDiv p {
     margin: 0;
     line-height: .4;
+}
+
+.infoIcon {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    right: 48px;
+    top: 20px;
 }

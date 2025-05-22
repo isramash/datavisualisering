@@ -1,11 +1,10 @@
 
 #managerCon {
-    padding-top: 5vh;
+    padding-top: 6vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 0 48px;
-    margin-bottom: 4vh;
+    margin: 1vh 48px 10vh 48px;
 }
 
 .manager {
@@ -19,6 +18,7 @@
 .manager img {
     border-radius: 100%;
     margin-bottom: 16px;
+    cursor: pointer;
 }
 .manager button {
     all: unset;
@@ -26,6 +26,12 @@
     font-family: Arial, Helvetica, sans-serif;
     color: var(--textWhite);
     max-width: 50%;
+    cursor: pointer;
+    transition: 700ms;
+}
+
+.manager img:hover {
+    transform: scale(1.1);
 }
 
 .manager .managerInfo {
