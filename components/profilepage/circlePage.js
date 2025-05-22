@@ -3,7 +3,6 @@ function circleDiagram() {
     let managerID = parseInt(div.className);
 
     //  Hämta DJ-ID:n för den här chefen
-
     let djIds = DJs.filter(dj => dj.managerID === managerID)
         .map(dj => dj.id);
     console.log("DJ IDs:", djIds);
@@ -47,28 +46,28 @@ function circleDiagram() {
     }
     console.log(dataArray);
     drawPieWithD3(dataArray);
+    continentList(dataArray)
 }
 
 function drawPieWithD3(dataArray) {
+
     const width = 300;
     const height = 300;
-    const svgWidth = 300;
-    const svgHeight = 300;
     const radius = Math.min(width, height) / 2;
 
     const total = dataArray.reduce((sum, d) => sum + d.gigs, 0);
 
     const colors = d3.scaleOrdinal()
         .domain(dataArray.map(d => d.continent))
-        .range(d3.schemeCategory10);
+        .range(["#FFA41D", "#E57373", "#716BE4", "#90C547", "#FF57CC", "#D9534F"]);
 
-    const svg = d3.select("#circleDiagram")
+    const svg = d3.select("#contentDiagram")
         .append("svg")
         .attr("id", "d3chart")
-        .attr("width", svgWidth)
-        .attr("height", svgHeight)
+        .attr("width", width)
+        .attr("height", height)
         .append("g")
-        .attr("transform", `translate(${svgWidth / 2},${svgHeight / 2})`);
+        .attr("transform", `translate(${width / 2},${height / 2})`);
 
     const pie = d3.pie()
         .value(d => d.gigs);
@@ -94,14 +93,50 @@ function drawPieWithD3(dataArray) {
         .append("text")
         .text(d => {
             const percent = ((d.data.gigs / total) * 100).toFixed(1);
-            return `${d.data.continent} (${percent}%)`;
+            return `${percent}%`;
         })
         .attr("transform", d => {
             const [x, y] = arc.centroid(d);
-            const offset = 1.8;
+            const offset = 1.4;
             return `translate(${x * offset}, ${y * offset})`;
         })
         .style("text-anchor", "middle")
-        .style("font-size", "12px")
+        .style("font-size", "16px")
         .style("fill", "#fff");
+}
+
+function continentList(dataArray) {
+
+    const parentID = document.querySelector('#contentDiagram')
+    const continentList = document.createElement('div');
+    continentList.id = 'continentList';
+
+    const colors = d3.scaleOrdinal()
+        .range(["#FFA41D", "#E57373", "#716BE4", "#90C547", "#FF57CC", "#D9534F"]);
+
+    dataArray.forEach(continent => {
+        const item = document.createElement("div");
+        item.style.display = "flex";
+        item.style.alignItems = "center";
+        item.style.marginBottom = "6px";
+
+        const colorCircle = document.createElement("span");
+        colorCircle.style.display = "inline-block";
+        colorCircle.style.width = "12px";
+        colorCircle.style.height = "12px";
+        colorCircle.style.borderRadius = "50%";
+        colorCircle.style.backgroundColor = colors(continent.continent);
+        colorCircle.style.marginRight = "8px";
+
+        const label = document.createElement("span");
+        label.textContent = continent.continent;
+        label.style.color = '#fff'
+        label.style.fontSize = "16px";
+        label.style.fontFamily = "var(--fontMaven)"
+
+        parentID.append(continentList)
+        item.appendChild(colorCircle);
+        item.appendChild(label);
+        continentList.appendChild(item);
+    })
 }

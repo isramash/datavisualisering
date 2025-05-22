@@ -51,9 +51,15 @@ function profilepage(manager) {
                         <p>Latest Shows</p>
                         <p></p>
                     </div>
-                    <div id= 'circleDiagram'>
-                    <p>Most Active in</p>
+
+                    <div id= 'circleDiagramCon'>
+                        <p style ='     font-family: var(--fontMaven);    font-size: 1.78vw;  font-weight: 500; text-align: center;'>Most Active in</p>
+                        <div id = 'contentDiagram'>
+                        </div>
+
                     </div>
+
+                    
                 </div>
             `;
 
