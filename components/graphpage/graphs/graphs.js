@@ -67,8 +67,6 @@ function renderGraphs() {
                 };
             });
 
-        console.log(latestShows)
-
         const yearlyAverages = [];
         let signedDjs = [];
         for (let year of years) {
@@ -88,7 +86,6 @@ function renderGraphs() {
 
             maxEarnings = Math.max(maxEarnings, avgEarnings);
             maxGigs = Math.max(maxGigs, avgGigs);
-
 
             signedDjs = data.djList.map(djID => {
                 const dj = DJs.find(d => d.id === djID);
@@ -136,7 +133,7 @@ function renderGraphs() {
         .text("Year");
 
     earningSvg.append("text")
-        .attr("x", wPadding) // i linje med y-axeln
+        .attr("x", wPadding)
         .attr("y", yScaleEarnings(maxEarnings) - 20)
         .attr("text-anchor", "end")
         .classed("paragraphsAxis", true)
@@ -171,11 +168,9 @@ function toggleManagerGraph(manager) {
     const maxActive = 4;
     const active = activeManagers.includes(manager.id);
 
-    const tooltip = d3.select("body")
-        .append("div")
-        .attr("id", "tooltip")
-        .html(`<div>${manager.name}</div><div>Klicka för att läsa mer</div>`)
-
+    const tooltip = document.createElement("div");
+    tooltip.id = "tooltip";
+    tooltip.innerHTML = `<div>${manager.name}</div><div>Klicka för att läsa mer</div>`;
 
     if (!active && activeManagers.length >= maxActive) return;
 
@@ -183,7 +178,7 @@ function toggleManagerGraph(manager) {
         const color = getAvailableColor();
 
         activeManagers.push(manager.id);
-        managerActiveColor[manager.id] = color; 
+        managerActiveColor[manager.id] = color;
 
         const data = managerDataset.find(d => d.managerId === manager.id);
 
@@ -203,16 +198,16 @@ function toggleManagerGraph(manager) {
             .attr("stroke-width", 5)
             .attr("d", earningsLine)
             .on("mouseover", function (event) {
-                tooltip.transition().duration(200).style("opacity", 1);
+                document.body.appendChild(tooltip);
+                tooltip.style.opacity = "1";
                 d3.select(this).style("stroke-width", 7);
             })
             .on("mousemove", function (event) {
-                tooltip
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                tooltip.style.left = (event.pageX + 10) + "px";
+                tooltip.style.top = (event.pageY - 28) + "px";
             })
             .on("mouseout", function () {
-                tooltip.transition().duration(200).style("opacity", 0);
+                tooltip.remove();
                 d3.select(this).style("stroke-width", 5);
             })
             .on("click", () => {
@@ -231,16 +226,16 @@ function toggleManagerGraph(manager) {
             .attr("stroke-width", 5)
             .attr("d", gigsLine)
             .on("mouseover", function (event) {
-                tooltip.transition().duration(200).style("opacity", 1);
+                document.body.appendChild(tooltip);
+                tooltip.style.opacity = "1";
                 d3.select(this).style("stroke-width", 7);
             })
             .on("mousemove", function (event) {
-                tooltip
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
+                tooltip.style.left = (event.pageX + 10) + "px";
+                tooltip.style.top = (event.pageY - 28) + "px";
             })
             .on("mouseout", function () {
-                tooltip.transition().duration(200).style("opacity", 0);
+                tooltip.remove();
                 d3.select(this).style("stroke-width", 5);
             })
             .on("click", () => {
@@ -249,18 +244,19 @@ function toggleManagerGraph(manager) {
                     top: window.innerHeight * 2,
                     behavior: "smooth"
                 });
-            })
-
+            });
 
         d3.select(`#img${manager.id}`).style("border", `6px solid ${color}`);
 
-
     } else {
-        const index = activeManagers.indexOf(manager.id);
-        if (index !== -1) activeManagers.splice(index, 1); // Ta bort manager
+        for (let i = 0; i < activeManagers.length; i++) {
+            if (activeManagers[i] === manager.id) {
+                activeManagers.splice(i, 1);
+                break;
+            }
+        }
 
-        const color = managerActiveColor[manager.id];
-        delete managerActiveColor[manager.id];  // ta bort från objektet
+        delete managerActiveColor[manager.id];
 
         earningSvg.select(`.line${manager.id}`).remove();
         gigsSvg.select(`.line${manager.id}`).remove();

@@ -1,3 +1,4 @@
+
 function renderManagers() {
   d3.select("#graphpageCon").append("div")
     .attr("id", "managerCon")

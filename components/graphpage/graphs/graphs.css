@@ -21,7 +21,7 @@
 
 #tooltip {
   position: absolute;
-  opacity: 1;
+  opacity: 0;
   cursor: pointer;
   border-radius: 10px;
   background: rgba(217, 217, 217, 0.17);
