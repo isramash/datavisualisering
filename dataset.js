@@ -42,61 +42,61 @@ const Managers = [
   {
     id: 1323,
     name: "Fatima Johansson",
-    image: "avatar.avif",
+    image: "images/woman1.png",
     about: "My name is Fatima Johansson and I have a background in event planning and artist development. My focus is on creating safe environments where creative ideas can flourish. I work closely with my artists to build long-term strategies and meaningful collaborations. With an eye for detail and a sense for trends, I help them reach out in the right way. I believe in transparency, responsiveness, and the power of a strong team. For me, it’s about creating authentic experiences for both the audience and the artists I represent."
   },
   {
     id: 1609,
     name: "Kerstin Rodriguez",
-    image: "avatar.avif",
+    image: "images/woman2.png",
     about: "My name is Kerstin Rodriguez and I work with developing artists within urban music. With several years of industry experience, I have learned the importance of networking, timing, and a clear identity. I see every collaboration as an opportunity for growth and innovation. For me, it’s important that the artist feels free to express themselves while we build a sustainable career together. I believe in strategy, passion, and hard work – and that every artist has a unique story worth highlighting."
   },
   {
     id: 1656,
     name: "Maja Shankar",
-    image: "avatar.avif",
+    image: "images/woman3.png",
     about: "My name is Maja Shankar and I work as a manager focusing on electronic music and live scenes. I am passionate about creating a balance between creative freedom and professional structure. Over the years, I have worked with both new and established artists, valuing personal relationships where trust and respect are central. My goal is that every artist feels empowered, heard, and seen – no matter where they are in their career. I believe in sustainable development, long-term planning, and building careers with heart."
   },
   {
     id: 3151,
     name: "Mahan Nilsson",
-    image: "avatar.avif",
+    image: "images/man1.png",
     about: "My name is Mahan Nilsson and I have a background in technology and music production. As a manager, I focus on building bridges between artists and technological platforms to maximize their reach. I work closely with my artists on everything from tour planning to brand strategies. I believe in innovation, structure, and a strong network. For me, it’s not just about career steps – it’s about creating a sustainable platform where artists can develop and reach their full potential both creatively and commercially."
   },
   {
     id: 6643,
     name: "Karl Petrovic",
-    image: "avatar.avif",
+    image: "images/man2.png",
     about: "My name is Karl Petrovic and I am a manager focusing on optimizing artists' workflows and career paths. With a background in logistics and business development, I help my artists build stable foundations that last over time. I work in a structured but creative way, believing in the importance of balance between stage life and private life. I see every collaboration as a partnership where openness and trust are key. My goal is for the artist to feel secure at every step – from the first gig to international launch."
   },
   {
     id: 7787,
     name: "Sara Shirzad",
-    image: "avatar.avif",
+    image: "images/woman4.png",
     about: "My name is Sara Shirzad and I work as a manager with a special focus on inclusive performing arts and female DJs. I strongly believe in representation and giving space to voices that are often overlooked. By building strong networks and safe collaborations, I create room for my artists to grow both artistically and personally. For me, it’s important that every artist feels seen, understood, and free to create on their own terms. I am passionate about justice, creativity, and long-term change within the music industry."
   },
   {
     id: 7836,
     name: "Omar Wennström",
-    image: "avatar.avif",
+    image: "images/man3.png",
     about: "My name is Omar Wennström and I work to help DJs and producers reach their full potential. I have a strong interest in international markets and actively work on building networks across borders. As a manager, I focus on structure, development, and long-term perspectives. I believe in creating a secure foundation for the artist to grow from, with clear goals and strong support behind them. For me, it’s important that every collaboration is built on respect, responsiveness, and shared visions."
   },
   {
     id: 7909,
     name: "Tomek Garcia",
-    image: "avatar.avif",
+    image: "images/man4.png",
     about: "My name is Tomek Garcia and I work as a DJ manager focusing on building strong, long-term careers for my artists. Over the years, I have helped DJs reach global audiences, especially in Europe and Southeast Asia, where I have a broad network. I believe in clear communication, strategic planning, and that every artist should feel seen and supported. For me, it’s not just about gigs – it’s about creating opportunities where DJs truly get to shine. I am passionate about diversity, innovation, and always finding the right stage for the right sound."
   },
   {
     id: 8370,
     name: "Ivan Holmberg",
-    image: "avatar.avif",
+    image: "images/man5.png",
     about: "My name is Ivan Holmberg and I have a background in sound design and event production. As a manager, I combine technical expertise with artistic understanding to create holistic solutions for my artists. I work closely with them to find the right expression, the right stage, and the right audience. I believe in innovation, respect, and clear communication as foundations for success. My drive is to help each artist realize their vision – both in the studio and on stage. I love being part of the creative journey."
   },
   {
     id: 9597,
     name: "Stella Dudek",
-    image: "avatar.avif",
+    image: "images/woman5.png",
     about: "My name is Stella Dudek and I work as a manager focusing on electronic music and queer culture. I have a passionate commitment to highlighting voices and stories that are often missing from the mainstream scene. With a strong network and long experience, I create platforms where artists can flourish on their own terms. I believe in courage, authenticity, and long-term work. For me, every artist is a unique universe, and my job is to give them the right tools and space to shine."
   }
 ];

@@ -41,7 +41,7 @@ function profilepage(manager) {
                     </svg>
                 </div >
                 <div id = 'firstCon'>
-                    <img src = '../../avatar.avif'>
+                    <img src = '${manager.image}'>
                     <div id ='aboutCon'>
                         <p id = 'managerName' style ='color: var(--textGray);     font-family: var(--fontMaven);     font-size: 3.78vw;  font-weight: 500;'> ${manager.name}</p>
                         <p id = 'aboutManager'>${manager.about}</p>
