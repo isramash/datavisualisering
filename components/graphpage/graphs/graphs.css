@@ -1,5 +1,44 @@
-
 #graphCon {
-    display: flex;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 14px;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 0;
+}
+
+#earningsSvg,
+#gigsSvg,
+.graphInfo {
+  justify-self: center;
+}
+
+.graphInfo {
+  margin-top: 32px;
+}
+
+#tooltip {
+  position: absolute;
+  opacity: 1;
+  cursor: pointer;
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.17);
+  box-shadow: 7.333px -7.333px 7.333px 0px rgba(165, 165, 165, 0.17) inset,
+    -7.333px 7.333px 7.333px 0px rgba(255, 255, 255, 0.17) inset;
+  backdrop-filter: blur(5.5px);
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 8px;
+  color: var(--textWhite);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#tooltip div:first-child {
+    font-size: 14px;
+    font-weight: bold;
 }

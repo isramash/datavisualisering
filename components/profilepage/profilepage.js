@@ -1,12 +1,26 @@
 
-function profilepage (manager) {
+function profilepage(manager) {
 
     // Varför funkar detta?
     let existingProfile = document.querySelector('#ProfilePage');
     if (existingProfile) {
         existingProfile.remove();
     }
-    
+
+    const fullManagerData = managerDataset.find(x => x.managerId === manager.id);
+
+    let signedDjsList = "";
+
+    if (fullManagerData.yearlyAverages.length > 0) {
+        signedDjsList = fullManagerData.yearlyAverages.map(data => {
+            const year = data.year;
+            const djs = data.signedDjs;
+
+            return `<p> ${year} <br> ${djs} </p>`;
+        })
+    }
+
+
     let main = document.querySelector('main');
 
     let container = document.createElement('div');
@@ -15,13 +29,13 @@ function profilepage (manager) {
     container.id = 'ProfilePage';
     container.classList.add(manager.id)
     container.innerHTML = `
-                <div id ='uppButton'>
+                <div id = 'uppButton'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <path d="M12 30L24 18L36 30" stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 30L24 18L36 30" stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </div>
+                </div >
                 <div id = 'firstCon'>
-                    <img src = '/media/profile.png'>
+                    <img src = '../../avatar.avif'>
                     <div id ='aboutCon'>
                         <p id = 'managerName' style ='color: var(--textGray);     font-family: var(--fontMaven);     font-size: 3.78vw;  font-weight: 500;'> ${manager.name}</p>
                         <p id = 'aboutManager'>${manager.about}</p>
@@ -31,7 +45,7 @@ function profilepage (manager) {
                 <div id = 'secondCon'>
                     <div id ='signedList'>
                         <p>Signed Djs</p>
-                        <p></p>
+                        <div id='signedListText'> ${signedDjsList} </div>
                     </div>
                     <div id ='latestList'>
                         <p>Latest Shows</p>
@@ -41,8 +55,17 @@ function profilepage (manager) {
                     <p>Most Active in</p>
                     </div>
                 </div>
-    `;
+            `;
 
     main.append(container)
-    circleDiagram()
+
+    let uppButton = document.querySelector("#uppButton");
+    uppButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: "smooth"
+        });
+    })
+
+    circleDiagram();
 }
