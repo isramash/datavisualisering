@@ -12,7 +12,6 @@
     width: 100vw;
 }
 
-
 #ProfilePage p {
     color: var(--textWhite);
 }
@@ -25,8 +24,8 @@
 }
 
 #firstCon img {
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
 }
 

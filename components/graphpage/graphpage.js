@@ -17,7 +17,6 @@ function graphpage() {
     earningsInfo.className = "graphInfo paragraphs";
     earningsInfo.textContent = "Average income value of the managers signed DJ:s for the last 5 years";
 
-    // Info container och ikon
     let infoDiv = document.createElement("div");
     infoDiv.innerHTML = `<p>Click on one or multiple managers to see and compare statistics</p><br><p>Maximum four active at the same time</p>`;
     infoDiv.classList.add("infoDiv");
@@ -37,7 +36,6 @@ function graphpage() {
             infoIcon.innerHTML = getInfoIcon("close");
         }
     });
-
 
     graphpageCon.append(infoIcon);
     graphpageCon.append(infoDiv);
