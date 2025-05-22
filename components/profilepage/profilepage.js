@@ -6,14 +6,14 @@ function profilepage (manager) {
     if (existingProfile) {
         existingProfile.remove();
     }
-
-
-    let main = document.querySelector('main');
     
+    let main = document.querySelector('main');
+
     let container = document.createElement('div');
     container.innerHTML = "";
 
     container.id = 'ProfilePage';
+    container.classList.add(manager.id)
     container.innerHTML = `
                 <div id ='uppButton'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -37,11 +37,12 @@ function profilepage (manager) {
                         <p>Latest Shows</p>
                         <p></p>
                     </div>
-                    <div>
+                    <div id= 'circleDiagram'>
                     <p>Most Active in</p>
                     </div>
                 </div>
     `;
 
     main.append(container)
+    circleDiagram()
 }
