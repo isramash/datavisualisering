@@ -59,7 +59,7 @@ function profilepage(manager) {
                     </div>
 
                     <div id= 'circleDiagramCon'>
-                        <p style ='     font-family: var(--fontMaven);    font-size: 1.78vw;  font-weight: 500; '>Most Active in</p>
+                        <p style ='     font-family: var(--fontMaven);    font-size: 1.78vw;  font-weight: 500;'>Active in</p>
                         <div id = 'contentDiagram'>
                         </div>
 
