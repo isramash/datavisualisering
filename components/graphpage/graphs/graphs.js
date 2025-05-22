@@ -26,8 +26,11 @@ function renderGraphs() {
             yearlyData[year] = { totalIncome: 0, totalGigs: 0, djList: [] };
         }
 
+        let allGigs = [];
+
         for (let dj of managedDJs) {
             const djGigs = Gigs.filter(gig => gig.djID === dj.id);
+            allGigs = djGigs;
             for (let gig of djGigs) {
                 const year = new Date(gig.date).getFullYear();
                 if (year >= 2020 && year <= 2024) {
@@ -39,6 +42,31 @@ function renderGraphs() {
                 }
             }
         }
+
+        function findCityById(cityId) {
+            for (const continent in citiesByContinent) {
+                const cities = citiesByContinent[continent];
+                for (const city of cities) {
+                    if (city.id === cityId) {
+                        return city.name;
+                    }
+                }
+            }
+            return null;
+        }
+
+        const latestShows = allGigs
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 5)
+            .map(gig => {
+                const city = findCityById(gig.cityID);
+                return {
+                    cityName: city,
+                    attendance: gig.attendance,
+                };
+            });
+
+        console.log(latestShows)
 
         const yearlyAverages = [];
         let signedDjs = [];
@@ -61,6 +89,7 @@ function renderGraphs() {
         managerDataset.push({
             managerId: managerID,
             managerName: managerName,
+            latestShows: latestShows,
             yearlyAverages: yearlyAverages
         });
     }
@@ -91,19 +120,19 @@ function renderGraphs() {
         .call(d3.axisLeft(yScaleEarnings));
 
     // Axeltexter – Earnings
-earningSvg.append("text")
-    .attr("x", xScale(2024) + 30) 
-    .attr("y", hPadding + hViz + 5) 
-    .attr("text-anchor", "start")
-    .classed("paragraphsAxis", true)
-    .text("Year");
+    earningSvg.append("text")
+        .attr("x", xScale(2024) + 30)
+        .attr("y", hPadding + hViz + 5)
+        .attr("text-anchor", "start")
+        .classed("paragraphsAxis", true)
+        .text("Year");
 
-earningSvg.append("text")
-    .attr("x", wPadding) // i linje med y-axeln
-    .attr("y", yScaleEarnings(maxEarnings) - 20)
-    .attr("text-anchor", "end")
-    .classed("paragraphsAxis", true)
-    .text("Earnings");
+    earningSvg.append("text")
+        .attr("x", wPadding) // i linje med y-axeln
+        .attr("y", yScaleEarnings(maxEarnings) - 20)
+        .attr("text-anchor", "end")
+        .classed("paragraphsAxis", true)
+        .text("Earnings");
 
     // Axlar – Gigs
     gigsSvg.append("g")
@@ -116,17 +145,17 @@ earningSvg.append("text")
         .classed("axis", true)
         .call(d3.axisLeft(yScaleGigs));
 
-   gigsSvg.append("text")
-    .attr("x", xScale(2024) + 30)
-    .attr("y", hPadding + hViz + 5)
-    .attr("text-anchor", "start")
-    .classed("paragraphsAxis", true)
-    .text("Year");
+    gigsSvg.append("text")
+        .attr("x", xScale(2024) + 30)
+        .attr("y", hPadding + hViz + 5)
+        .attr("text-anchor", "start")
+        .classed("paragraphsAxis", true)
+        .text("Year");
 
-gigsSvg.append("text")
-    .attr("x", wPadding)
-    .attr("y", yScaleGigs(maxGigs) - 20)
-    .attr("text-anchor", "end")
-    .classed("paragraphsAxis", true)
-    .text("Gigs");
+    gigsSvg.append("text")
+        .attr("x", wPadding)
+        .attr("y", yScaleGigs(maxGigs) - 20)
+        .attr("text-anchor", "end")
+        .classed("paragraphsAxis", true)
+        .text("Gigs");
 }

@@ -10,17 +10,23 @@ function profilepage(manager) {
     const fullManagerData = managerDataset.find(x => x.managerId === manager.id);
     console.log(fullManagerData);
 
-    let signedDjsList = "";
-
     if (fullManagerData.yearlyAverages.length > 0) {
         signedDjsList = fullManagerData.yearlyAverages.map(data => {
             const year = data.year;
-            const djs = data.signedDjs;
+            const djs = data.signedDjs.join('<br>');;
 
             return `<p> ${year} <br> ${djs} </p>`;
         })
     }
 
+    if (fullManagerData.latestShows.length > 0) {
+        latestShowsList = fullManagerData.latestShows.map(data => {
+            const cityName = data.cityName;
+            const attendance = data.attendance;
+
+            return `<p> ${cityName} <br> Attendance: ${attendance}</p>`;
+        })
+    }
 
     let main = document.querySelector('main');
 
@@ -49,7 +55,7 @@ function profilepage(manager) {
                     </div>
                     <div id ='latestList'>
                         <p>Latest Shows</p>
-                        <p></p>
+                        <div id='showsListText'> ${latestShowsList} </div>
                     </div>
                     <div>
                     <p>Most Active in</p>
