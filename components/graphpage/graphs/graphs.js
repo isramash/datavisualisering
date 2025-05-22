@@ -118,7 +118,6 @@ function renderGraphs() {
         .domain([0, maxGigs])
         .range([hPadding + hViz, hPadding]);
 
-    // Axlar – Earnings
     earningSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
         .classed("axis", true)
@@ -129,7 +128,6 @@ function renderGraphs() {
         .classed("axis", true)
         .call(d3.axisLeft(yScaleEarnings));
 
-    // Axeltexter – Earnings
     earningSvg.append("text")
         .attr("x", xScale(2024) + 30)
         .attr("y", hPadding + hViz + 5)
@@ -144,7 +142,6 @@ function renderGraphs() {
         .classed("paragraphsAxis", true)
         .text("Earnings");
 
-    // Axlar – Gigs
     gigsSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
         .classed("axis", true)
@@ -186,7 +183,7 @@ function toggleManagerGraph(manager) {
         const color = getAvailableColor();
 
         activeManagers.push(manager.id);
-        managerActiveColor[manager.id] = color;  // sätt färg i objektet
+        managerActiveColor[manager.id] = color; 
 
         const data = managerDataset.find(d => d.managerId === manager.id);
 
