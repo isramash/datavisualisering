@@ -73,6 +73,7 @@
     margin-bottom: 20px;
 }
 
-#signedListText p {
+#signedListText p,
+#showsListText p {
     font-size: 16px;
 }
