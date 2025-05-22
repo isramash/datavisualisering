@@ -9,17 +9,23 @@ function profilepage(manager) {
 
     const fullManagerData = managerDataset.find(x => x.managerId === manager.id);
 
-    let signedDjsList = "";
-
     if (fullManagerData.yearlyAverages.length > 0) {
         signedDjsList = fullManagerData.yearlyAverages.map(data => {
             const year = data.year;
-            const djs = data.signedDjs;
+            const djs = data.signedDjs.join('<br>');;
 
             return `<p> ${year} <br> ${djs} </p>`;
         })
     }
 
+    if (fullManagerData.latestShows.length > 0) {
+        latestShowsList = fullManagerData.latestShows.map(data => {
+            const cityName = data.cityName;
+            const attendance = data.attendance;
+
+            return `<p> ${cityName} <br> Attendance: ${attendance}</p>`;
+        })
+    }
 
     let main = document.querySelector('main');
 
@@ -35,7 +41,7 @@ function profilepage(manager) {
                     </svg>
                 </div >
                 <div id = 'firstCon'>
-                    <img src = '../../avatar.avif'>
+                    <img src = '${manager.image}'>
                     <div id ='aboutCon'>
                         <p id = 'managerName' style ='color: var(--textGray);     font-family: var(--fontMaven);     font-size: 3.78vw;  font-weight: 500;'> ${manager.name}</p>
                         <p id = 'aboutManager'>${manager.about}</p>
@@ -49,7 +55,7 @@ function profilepage(manager) {
                     </div>
                     <div id ='latestList'>
                         <p>Latest Shows</p>
-                        <p></p>
+                        <div id='showsListText'> ${latestShowsList} </div>
                     </div>
 
                     <div id= 'circleDiagramCon'>

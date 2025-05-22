@@ -33,7 +33,8 @@ const citiesByContinent = {
   Asia: [
     { "name": "Kosmolac", "id": 755, "population": 345 },
     { "name": "Belleville", "id": 338, "population": 351 },
-    { "name": "Chong Guo", "id": 959, "population": 392 }
+    { "name": "Chong Guo", "id": 959, "population": 392 },
+    { "name": "Pokyo", "id": 554, "population": 412 },
   ]
 };
 
@@ -8355,4 +8356,3 @@ const Gigs = [
   { "date": "2024-12-30", "djID": 9254, "cityID": 836, "producerID": 5208, "cost": 286430, "djEarnings": 24300, "managerEarnings": 8100, "cityEarnings": 57773, "producerEarnings": 65297, "attendance": 594, "price": 409 },
   { "date": "2024-12-30", "djID": 5396, "cityID": 869, "producerID": 6975, "cost": 238472, "djEarnings": 43423, "managerEarnings": 10000, "cityEarnings": 70602, "producerEarnings": 67235, "attendance": 375, "price": 509 }
 ];
-

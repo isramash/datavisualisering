@@ -27,8 +27,11 @@ function renderGraphs() {
             yearlyData[year] = { totalIncome: 0, totalGigs: 0, djList: [] };
         }
 
+        let allGigs = [];
+
         for (let dj of managedDJs) {
             const djGigs = Gigs.filter(gig => gig.djID === dj.id);
+            allGigs = djGigs;
             for (let gig of djGigs) {
                 const year = new Date(gig.date).getFullYear();
                 if (year >= 2020 && year <= 2024) {
@@ -40,6 +43,31 @@ function renderGraphs() {
                 }
             }
         }
+
+        function findCityById(cityId) {
+            for (const continent in citiesByContinent) {
+                const cities = citiesByContinent[continent];
+                for (const city of cities) {
+                    if (city.id === cityId) {
+                        return city.name;
+                    }
+                }
+            }
+            return null;
+        }
+
+        const latestShows = allGigs
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 5)
+            .map(gig => {
+                const city = findCityById(gig.cityID);
+                return {
+                    cityName: city,
+                    attendance: gig.attendance,
+                };
+            });
+
+        console.log(latestShows)
 
         const yearlyAverages = [];
         let signedDjs = [];
@@ -73,6 +101,7 @@ function renderGraphs() {
         managerDataset.push({
             managerId: managerID,
             managerName: managerName,
+            latestShows: latestShows,
             yearlyAverages: yearlyAverages
         });
     }
