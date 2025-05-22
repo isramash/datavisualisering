@@ -107,13 +107,8 @@ function renderGraphs() {
         .domain(years)
         .range([wPadding, wPadding + wViz]);
 
-    yScaleEarnings = d3.scaleLinear()
-        .domain([0, maxEarnings])
-        .range([hPadding + hViz, hPadding]);
-
-    yScaleGigs = d3.scaleLinear()
-        .domain([0, maxGigs])
-        .range([hPadding + hViz, hPadding]);
+    yScaleEarnings = d3.scaleLinear([0, maxEarnings], [hPadding + hViz, hPadding]);
+    yScaleGigs = d3.scaleLinear([0, maxGigs], [hPadding + hViz, hPadding]);
 
     earningSvg.append("g")
         .attr("transform", `translate(0, ${hPadding + hViz})`)
