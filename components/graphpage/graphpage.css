@@ -3,3 +3,21 @@
     width: 100vw;
 }
 
+.infoDiv {
+    color: var(--textWhite);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    text-align: center;
+    margin: 5vh auto 0 auto;
+}
+
+.infoDiv p:last-child {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.infoDiv p {
+    margin: 0;
+    line-height: .4;
+}

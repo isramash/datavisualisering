@@ -19,9 +19,15 @@ function graphpage() {
     let gigsInfo = document.createElement("div");
     gigsInfo.className = "graphInfo paragraphs";
     gigsInfo.textContent = "Average gigs per DJ that the manager have booked for the last 5 years";
+    let infoDiv = document.createElement("div");
+    infoDiv.innerHTML = `<p>Click on one or mulitple managers to see statistics</p> <br> <p> Maximum four active at the same time</p>`;
+    infoDiv.classList.add("infoDiv");
+    graphpageCon.append(infoDiv);
 
     main.append(graphpageCon);
     renderManagers();
+
+
     graphpageCon.append(graphCon);
     renderGraphs();
     
