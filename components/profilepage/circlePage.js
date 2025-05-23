@@ -1,42 +1,33 @@
 function circleDiagram() {
+
     let div = document.querySelector("#ProfilePage");
     let managerID = parseInt(div.className);
 
-    //  Hämta DJ-ID:n för den här chefen
     let djIds = DJs.filter(dj => dj.managerID === managerID)
         .map(dj => dj.id);
-    console.log("DJ IDs:", djIds);
 
-    // Hämta cityID:n för konserterna som dessa DJs har gjort
     let cityIDs = Gigs.filter(gig => djIds.includes(gig.djID))
         .map(gig => gig.cityID);
 
     let totalGigs = cityIDs.length;
 
-    console.log(totalGigs);
-    console.log(cityIDs);
-
-    // Räkna antal gigs per stad
-    let cityGigCount = {}; // { cityID: antal gånger }
+    let cityGigCount = {};
 
     cityIDs.forEach(cityID => {
         cityGigCount[cityID] = (cityGigCount[cityID] || 0) + 1;
     });
-    console.log(cityGigCount);
 
-    // Räkna antal gigs per kontinent baserat på städernas gigs
+    const fixedColors = ["#E57373", "#FFA41D", "#716BE4", "#FF57CC", "#90C547", "#D9534F"];
     let dataArray = [];
 
     for (const continent in citiesByContinent) {
         const cities = citiesByContinent[continent];
-        console.log(cities);
 
         let count = 0;
 
         cities.forEach(city => {
             if (cityGigCount[city.id]) {
                 count += cityGigCount[city.id];
-                console.log(cityGigCount[city.id]);
             }
         });
 
@@ -44,19 +35,17 @@ function circleDiagram() {
             dataArray.push({ continent: continent, gigs: count });
         }
     }
-    console.log(dataArray);
-    drawPieWithD3(dataArray);
-    continentList(dataArray)
+    drawPieWithD3(dataArray, fixedColors);
+    continentList(dataArray, fixedColors)
 }
 
-function drawPieWithD3(dataArray) {
+function drawPieWithD3(dataArray, fixedColors) {
 
     const width = 300;
     const height = 300;
     const radius = Math.min(width, height) / 2;
 
     const total = dataArray.reduce((sum, d) => sum + d.gigs, 0);
-    const fixedColors = ["#E57373", "#FFA41D", "#716BE4", "#FF57CC", "#90C547", "#D9534F"];
 
     const colors = d3.scaleOrdinal()
         .domain(dataArray.map(d => d.continent))
@@ -106,13 +95,11 @@ function drawPieWithD3(dataArray) {
         .style("fill", "#fff");
 }
 
-function continentList(dataArray) {
+function continentList(dataArray, fixedColors) {
 
     const parentID = document.querySelector('#contentDiagram')
     const continentList = document.createElement('div');
     continentList.id = 'continentList';
-
-    const fixedColors = ["#E57373", "#FFA41D", "#716BE4", "#FF57CC", "#90C547", "#D9534F"];
 
     const colors = d3.scaleOrdinal()
         .range(fixedColors);
