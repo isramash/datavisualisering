@@ -18,12 +18,12 @@ function circleDiagram() {
     });
 
     const continentColors = {
-    Europe: "#E57373",
-    NorthAmerica: "#FFA41D",
-    SouthAmerica: "#716BE4",
-    Africa: "#FF57CC",
-    Oceania: "#90C547",
-    Asia: "#6AE1D3"
+        Europe: "#E57373",
+        NorthAmerica: "#FFA41D",
+        SouthAmerica: "#716BE4",
+        Africa: "#FF57CC",
+        Oceania: "#90C547",
+        Asia: "#6AE1D3"
     };
 
     let dataArray = [];
@@ -43,7 +43,7 @@ function circleDiagram() {
             dataArray.push({ continent: continent, gigs: count });
         }
     }
-    drawPieWithD3(dataArray,continentColors);
+    drawPieWithD3(dataArray, continentColors);
     continentList(dataArray, continentColors)
 }
 
@@ -55,7 +55,7 @@ function drawPieWithD3(dataArray, continentColors) {
 
     const total = dataArray.reduce((sum, d) => sum + d.gigs, 0);
 
-const svg = d3.select("#contentDiagram")
+    const svg = d3.select("#contentDiagram")
         .append("svg")
         .attr("id", "d3chart")
         .attr("width", width)
@@ -96,7 +96,8 @@ const svg = d3.select("#contentDiagram")
         })
         .style("text-anchor", "middle")
         .style("font-size", "16px")
-        .style("fill", "#fff");
+        .style("fill", "#fff")
+        .style("font-family", "Arial, Helvetica, sans-serif");
 }
 
 function continentList(dataArray, continentColors) {
@@ -123,7 +124,7 @@ function continentList(dataArray, continentColors) {
         label.textContent = continent.continent;
         label.style.color = '#fff'
         label.style.fontSize = "16px";
-        label.style.fontFamily = "var(--fontMaven)"
+        label.style.fontFamily = "Arial, Helvetica, sans-serif";
 
         parentID.append(continentList)
         item.appendChild(colorCircle);

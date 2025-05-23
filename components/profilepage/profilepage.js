@@ -49,15 +49,18 @@ function profilepage(manager) {
                 </div>
 
                 <div id = 'secondCon'>
-                    <div id ='signedList'>
-                        <p>Signed Djs</p>
-                        <div id='signedListText'> ${signedDjsList} </div>
+                    <div id ='signedListCon'>
+                        <div id ='signedList'>
+                            <p>Signed Djs</p>
+                            <div id='signedListText'> ${signedDjsList} </div>
                     </div>
-                    <div id ='latestList'>
-                        <p>Latest Shows</p>
-                        <div id='showsListText'> ${latestShowsList} </div>
                     </div>
-
+                    <div id ='latestListCon'>
+                        <div id ='latestList'>
+                            <p>Latest Shows</p>
+                            <div id='showsListText'> ${latestShowsList} </div>
+                    </div>
+                    </div>
                     <div id= 'circleDiagramCon'>
                         <p style ='     font-family: var(--fontMaven);    font-size: 1.78vw;  font-weight: 500;'>Active in</p>
                         <div id = 'contentDiagram'>
