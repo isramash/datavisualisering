@@ -12,7 +12,7 @@ function profilepage(manager) {
     if (fullManagerData.yearlyAverages.length > 0) {
         signedDjsList = fullManagerData.yearlyAverages.map(data => {
             const year = data.year;
-            const djs = data.signedDjs.join('<br>');;
+            const djs = data.signedDjs.join('<br>');
 
             return `<p> ${year} <br> ${djs} </p>`;
         })
@@ -52,13 +52,13 @@ function profilepage(manager) {
                     <div id ='signedListCon'>
                         <div id ='signedList'>
                             <p>Signed Djs</p>
-                            <div id='signedListText'> ${signedDjsList} </div>
+                            <div id='signedListText'> ${signedDjsList.join('')} </div>
                     </div>
                     </div>
                     <div id ='latestListCon'>
                         <div id ='latestList'>
                             <p>Latest Shows</p>
-                            <div id='showsListText'> ${latestShowsList} </div>
+                            <div id='showsListText'> ${latestShowsList.join('')} </div>
                     </div>
                     </div>
                     <div id= 'circleDiagramCon'>
