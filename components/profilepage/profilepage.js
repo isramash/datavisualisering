@@ -1,7 +1,6 @@
 
 function profilepage(manager) {
 
-    // Varför funkar detta?
     let existingProfile = document.querySelector('#ProfilePage');
     if (existingProfile) {
         existingProfile.remove();
