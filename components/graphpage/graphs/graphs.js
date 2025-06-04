@@ -31,7 +31,7 @@ function renderGraphs() {
 
         for (let dj of managedDJs) {
             const djGigs = Gigs.filter(gig => gig.djID === dj.id);
-            allGigs = djGigs;
+            allGigs.push(...djGigs);
             for (let gig of djGigs) {
                 const year = new Date(gig.date).getFullYear();
                 if (year >= 2020 && year <= 2024) {
